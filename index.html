@@ -13,10 +13,13 @@
   <style>
     :root{
       --bg: #0b0f19;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.12);
       --text: rgba(255,255,255,0.92);
       --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.6);
-      --border: rgba(255,255,255,0.12);
+      --muted2: rgba(255,255,255,0.60);
+      --link: rgba(255,255,255,0.92);
       --max: 980px;
       --radius: 18px;
       --shadow: 0 12px 40px rgba(0,0,0,0.35);
@@ -24,34 +27,24 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body{
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       line-height: 1.65;
       color: var(--text);
       background:
         radial-gradient(900px 420px at 20% -10%, rgba(120,160,255,0.25), transparent 60%),
         radial-gradient(900px 520px at 90% 10%, rgba(90,220,190,0.18), transparent 55%),
+        radial-gradient(900px 520px at 30% 100%, rgba(240,160,90,0.10), transparent 55%),
         var(--bg);
     }
 
-    a{
-      color: var(--text);
-      text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.35);
-    }
-    a:hover{
-      text-decoration-color: rgba(255,255,255,0.85);
-    }
+    a{ color: var(--link); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); }
+    a:hover{ text-decoration-color: rgba(255,255,255,0.85); }
 
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 18px 64px;
-    }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 64px; }
 
-    /* Navigation */
+    /* Top nav */
     .nav{
       position: sticky;
       top: 0;
@@ -65,118 +58,176 @@
       margin: 0 auto;
       padding: 12px 18px;
       display: flex;
-      justify-content: space-between;
+      gap: 12px;
       align-items: center;
+      justify-content: space-between;
     }
     .brand{
-      font-weight: 600;
+      display:flex; gap:10px; align-items:center;
+      font-weight: 650;
       letter-spacing: 0.2px;
     }
-    .nav-links a{
-      margin-left: 12px;
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: rgba(120,160,255,0.9);
+      box-shadow: 0 0 0 6px rgba(120,160,255,0.15);
+    }
+    .nav-links{
+      display:flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end;
       font-size: 14px;
-      color: var(--muted);
+    }
+    .nav-links a{
       text-decoration: none;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
     }
     .nav-links a:hover{
       color: var(--text);
+      border-color: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
     }
 
     /* Hero */
     .hero{
+      padding: 56px 0 18px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-      padding: 56px 0 32px;
+      gap: 18px;
+      align-items: start;
     }
     @media (max-width: 860px){
-      .hero{
-        grid-template-columns: 1fr;
-      }
+      .hero{ grid-template-columns: 1fr; padding-top: 28px; }
     }
-
     .badge{
-      display: inline-block;
-      padding: 8px 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.04);
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 14px;
+      width: fit-content;
     }
-
     h1{
-      margin: 0 0 8px;
+      margin: 14px 0 8px;
       font-size: 42px;
       line-height: 1.1;
+      letter-spacing: -0.5px;
     }
     @media (max-width: 420px){
       h1{ font-size: 34px; }
     }
-
     .subtitle{
       font-size: 18px;
       color: var(--muted);
-      margin-bottom: 12px;
+      margin: 0 0 14px;
     }
-
     .lead{
-      font-size: 18px;
-      margin-bottom: 18px;
-    }
-
-    .pillrow a{
-      display: inline-block;
-      margin-right: 10px;
-      margin-bottom: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      font-size: 14px;
-      color: var(--muted);
-      text-decoration: none;
-    }
-    .pillrow a:hover{
+      margin: 0;
       color: var(--text);
-      border-color: rgba(255,255,255,0.2);
+      font-size: 18px;
     }
 
     .card{
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.12);
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
     }
+    .mini{
+      box-shadow: none;
+      background: rgba(255,255,255,0.04);
+    }
+    .meta{
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 10px;
+    }
+    .pillrow{
+      display:flex; gap:10px; flex-wrap: wrap; margin-top: 12px;
+    }
+    .pill{
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+    }
+    .pill:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,0.2);
+    }
 
     /* Sections */
-    section{
-      margin-top: 32px;
+    section{ padding: 18px 0; }
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.2px;
     }
-    h2{
-      font-size: 22px;
-      margin-bottom: 10px;
+    .section-desc{
+      margin: 0 0 14px;
+      color: var(--muted);
     }
-    p{
-      margin: 0 0 12px;
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .role{
+      margin: 0;
+      font-weight: 650;
+      font-size: 16px;
+    }
+    .org{
+      color: var(--muted);
+      margin: 4px 0 10px;
+      font-size: 14px;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li{ margin: 8px 0; }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      margin: 18px 0;
     }
 
     footer{
-      margin-top: 48px;
+      margin-top: 30px;
       padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
       color: var(--muted2);
+      font-size: 14px;
+    }
+
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
   </style>
 </head>
 
 <body>
-  <div class="nav">
+  <div class="nav" role="navigation" aria-label="Primary">
     <div class="nav-inner">
-      <div class="brand">Vayola Florus</div>
+      <div class="brand"><span class="dot" aria-hidden="true"></span>Vayola Florus</div>
       <div class="nav-links">
         <a href="#what">What I Do</a>
         <a href="#experience">Experience</a>
@@ -187,104 +238,81 @@
   </div>
 
   <main class="wrap">
-
     <!-- HERO -->
-    <div class="hero">
+    <div class="hero" id="top">
       <div>
         <div class="badge">Ethical Technology &amp; Digital Equity Practitioner</div>
         <h1>Vayola Florus</h1>
-
         <p class="subtitle">
           I support nonprofits, communities, and public-sector teams with practical digital skills and responsible technology adoption.
         </p>
-
         <p class="lead">
           I help nonprofits and communities build digital skills and agency, and apply new and emerging technologies in ways that center people, rights, and community needs.
         </p>
 
         <div class="pillrow">
-          <a href="mailto:yourname@email.com">Email</a>
-          <a href="https://linkedin.com/in/yourname" target="_blank">LinkedIn</a>
-          <a href="https://twitter.com/yourname" target="_blank">Twitter / X</a>
-          <a href="https://github.com/vayolaflorus" target="_blank">GitHub</a>
+          <a class="pill" href="mailto:yourname@email.com">Email</a>
+          <a class="pill" href="https://linkedin.com/in/yourname" target="_blank">LinkedIn</a>
+          <a class="pill" href="https://twitter.com/yourname" target="_blank">Twitter / X</a>
+          <a class="pill" href="https://github.com/yourname" target="_blank">GitHub</a>
         </div>
       </div>
 
-      <!-- Profile photo -->
-      <aside class="card">
+      <aside class="card mini" aria-label="At a glance">
         <img
           src="profile.jpg"
           alt="Portrait of Vayola Florus"
-          style="width:100%; border-radius:14px; margin-bottom:12px;"
+          style="
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            object-fit:cover;
+            margin-bottom:10px;
+            display:block;
+          "
         />
-        <p style="font-size:14px; color:var(--muted);">
-          Ethical technology, digital equity, and community-centered technology work.
-        </p>
+
+        <p class="meta"><strong>At a glance</strong></p>
+        <ul class="list">
+          <li>Technology training &amp; coaching for frontline staff and community members</li>
+          <li>Applied digital literacy, online safety, and workplace tool adoption</li>
+          <li>Responsible use of emerging tech (including AI) in nonprofit and public-sector workflows</li>
+        </ul>
       </aside>
     </div>
 
+    <div class="divider"></div>
+
     <!-- WHAT I DO -->
     <section id="what">
-      <h2>What I Do</h2>
-      <p>
-        I design and facilitate technology training and coaching for frontline staff and community members.
-        My work focuses on applied digital literacy and responsible technology adoption in workplace and community settings.
+      <h2 class="section-title">What I Do</h2>
+      <p class="section-desc">
+        I design and facilitate technology training and coaching for frontline staff and community members. My work focuses on applied digital literacy and responsible technology adoption in workplace and community settings.
       </p>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience">
-      <h2>Professional Experience</h2>
+      <h2 class="section-title">Professional Experience</h2>
 
       <div class="card">
-        <p><strong>City of Boston — Department of Innovation and Technology</strong><br />
-        <em>Digital Equity &amp; Technology Training</em></p>
-
-        <p>
+        <p class="role">City of Boston — Department of Innovation and Technology</p>
+        <p class="org">Digital Equity &amp; Technology Training</p>
+        <p class="section-desc">
           In my current role with the City of Boston, I work at the intersection of public service delivery, digital equity, and organizational technology adoption. I design and facilitate technology trainings for city staff and residents, support community-based organizations through digital equity initiatives, and help teams adopt new tools in ways that improve access, efficiency, and accountability.
         </p>
-
-        <p>
-          My work includes leading digital literacy pilots, facilitating workshops and one-on-one technical support, coordinating cross-department partnerships, and contributing to public-facing digital equity resources and partner directories. This role grounds my work in the realities of public-sector constraints, community needs, and high-impact technology use.
-        </p>
       </div>
-
-      <div class="card" style="margin-top:14px;">
-        <p><strong>Immigration and Family Services Institute (IFSI)</strong><br />
-        <em>Adult Education &amp; Workforce Development</em></p>
-
-        <p>
-          Previously, I coordinated large-scale adult education and workforce development programs serving immigrant and adult learners across Greater Boston. I managed end-to-end program operations, significantly expanded enrollment, and integrated digital literacy, online safety, and technology confidence into education and job-readiness curricula.
-        </p>
-
-        <p>
-          I worked closely with instructors, learners, and partner organizations to ensure participants had the skills and support needed to navigate digital systems essential to employment, education, and daily life. This experience continues to inform my approach to ethical technology education, with a focus on accessibility, dignity, and practical relevance for learners most impacted by the digital divide.
-        </p>
-      </div>
-    </section>
-
-    <!-- CURRENT FOCUS -->
-    <section id="focus">
-      <h2>Current Focus</h2>
-      <p>
-        I’m currently focused on educating on how AI is entering nonprofit and public-sector workflows—and how to support people in using these tools responsibly, with awareness of power, risk, and agency.
-      </p>
-
-      <p><strong>Selected tools and programs for thoughtful technology use</strong></p>
-      <ul>
-        <li>90-Minute Responsible AI Workshop Agenda</li>
-        <li>Youth AI Lab for Social Impact — cohort-based program</li>
-        <li>Guidelines for Responsible AI Use in Community Programs</li>
-      </ul>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        📧 yourname@email.com<br />
-        🔗 linkedin.com/in/yourname
-      </p>
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p>
+          📧 yourname@email.com<br />
+          🔗 linkedin.com/in/yourname
+        </p>
+      </div>
     </section>
 
     <footer>
