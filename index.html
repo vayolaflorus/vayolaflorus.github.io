@@ -4,500 +4,445 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vayola Florus | Practical Technology Support</title>
-  <meta name="description" content="Vayola Florus provides practical technology and AI support for nonprofit and public-sector teams, including staff capacity building and public-facing digital skills programs." />
+  <meta name="description" content="Vayola Florus provides practical technology and AI support for nonprofit and public-sector teams. Plain language. No hype. Real program delivery." />
 
   <style>
     :root{
-      /* New combo: deep navy + coral accent + soft sky background */
-      --bg: #f6f8ff;
-      --ink: #121a2b;
-      --muted: #44506a;
-      --accent: #ff5a5f;      /* coral */
-      --accent2:#2b59ff;      /* navy-blue accent */
-      --soft: #eef2ff;
+      /* Editorial palette: ink + warm paper + one accent */
+      --paper: #fbfaf7;
+      --ink: #14171f;
+      --muted: #4b5563;
+      --line: rgba(20,23,31,0.14);
+      --soft: rgba(20,23,31,0.06);
       --card: #ffffff;
-      --border: rgba(18,26,43,0.12);
-      --shadow: 0 18px 40px rgba(18,26,43,0.10);
-      --radius: 16px;
+      --accent: #2b7a78; /* calm teal, used sparingly */
+      --accent-soft: rgba(43,122,120,0.12);
+      --radius: 14px;
+      --max: 1000px;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--paper);
       color: var(--ink);
-      background:
-        radial-gradient(900px 500px at 12% 8%, rgba(43,89,255,0.14), transparent 55%),
-        radial-gradient(900px 500px at 88% 18%, rgba(255,90,95,0.12), transparent 55%),
-        var(--bg);
-      line-height: 1.6;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    a{
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+    }
+    a:hover{
+      border-bottom-color: var(--accent);
+      color: var(--accent);
     }
 
     main{
-      max-width: 1020px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 42px 20px 70px;
+      padding: 42px 18px 70px;
     }
 
-    a{ color: var(--accent2); text-decoration: none; font-weight: 700; }
-    a:hover{ text-decoration: underline; }
-
-    h1,h2,h3{ line-height: 1.2; margin: 0 0 12px 0; }
-    h1{ font-size: clamp(2.0rem, 3.2vw, 2.7rem); letter-spacing: -0.02em; }
-    h2{ font-size: clamp(1.5rem, 2.3vw, 1.9rem); letter-spacing: -0.01em; margin-top: 44px; }
-    h3{ font-size: 1.15rem; }
-
-    p{ margin: 0 0 14px 0; color: var(--muted); }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(43,89,255,0.10);
-      border: 1px solid rgba(43,89,255,0.18);
-      color: var(--ink);
-      font-weight: 800;
-      font-size: 0.92rem;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: var(--accent);
-      display:inline-block;
-      box-shadow: 0 0 0 3px rgba(255,90,95,0.18);
-    }
-
-    /* Top nav */
-    .topbar{
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-    .name{
-      font-weight: 900;
-      letter-spacing: -0.01em;
-    }
-    .nav{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .nav a{
-      padding: 9px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(18,26,43,0.10);
-    }
-    .nav a:hover{
-      color: var(--ink);
-      text-decoration:none;
-      border-color: rgba(43,89,255,0.22);
-    }
-
-    /* Hero */
-    .hero{
-      background: linear-gradient(135deg, rgba(255,255,255,0.90), rgba(255,255,255,0.70));
-      border: 1px solid rgba(18,26,43,0.12);
-      border-radius: 22px;
-      padding: 44px 34px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset: -80px -80px auto auto;
-      width: 240px; height: 240px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,90,95,0.35), transparent 55%);
-      filter: blur(2px);
-      pointer-events:none;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset: auto auto -110px -110px;
-      width: 260px; height: 260px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(43,89,255,0.30), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-inner{
-      position: relative;
+    /* Layout: left rail + content */
+    .layout{
       display:grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 22px;
+      grid-template-columns: 220px 1fr;
+      gap: 36px;
       align-items:start;
     }
-    .lead{
-      font-size: 1.06rem;
-      max-width: 780px;
+
+    /* Left rail */
+    .rail{
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      padding: 14px 0;
     }
-    .hero-points{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
+    .name{
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
     }
-    .chip{
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(43,89,255,0.08);
-      border: 1px solid rgba(43,89,255,0.16);
-      color: var(--ink);
-      font-weight: 750;
-      font-size: 0.92rem;
+    .role{
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 16px;
     }
-    .buttons{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .nav a{
+      display:block;
+      padding: 10px 0;
+      border: 0;
+      color: var(--muted);
+    }
+    .nav a:hover{
+      color: var(--accent);
+    }
+    .rail .cta{
       margin-top: 18px;
+      display:block;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(43,122,120,0.22);
+      color: var(--ink);
+      font-weight: 700;
+      width: fit-content;
+    }
+    .rail .cta:hover{
+      color: var(--accent);
+      border-color: rgba(43,122,120,0.35);
+    }
+
+    /* Content */
+    h1,h2,h3{ line-height:1.25; margin:0; }
+    h1{
+      font-size: clamp(2.0rem, 3.2vw, 2.8rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+    h2{
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+      margin-top: 46px;
+      margin-bottom: 12px;
+    }
+    h3{
+      font-size: 1.05rem;
+      margin: 0 0 8px 0;
+    }
+
+    p{ margin: 0 0 14px 0; color: var(--muted); }
+    .lead{
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    /* A simple accent rule that feels intentional */
+    .accent-rule{
+      height: 2px;
+      width: 72px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin: 18px 0 22px;
+    }
+
+    /* Hero actions (buttons without “buttony” template look) */
+    .actions{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 16px;
     }
     .btn{
       display:inline-block;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border-radius: 12px;
-      font-weight: 900;
-      border: 2px solid rgba(18,26,43,0.14);
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font-weight: 750;
+    }
+    .btn:hover{
+      border-color: rgba(43,122,120,0.40);
+      color: var(--accent);
     }
     .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .btn-primary:hover{
       background: var(--accent);
-      border-color: rgba(255,90,95,0.55);
-      color: #111;
-      box-shadow: 0 10px 22px rgba(255,90,95,0.18);
-    }
-    .btn-primary:hover{ filter: brightness(0.98); text-decoration:none; }
-    .btn-secondary{
-      background: rgba(255,255,255,0.65);
-      color: var(--ink);
-    }
-    .btn-secondary:hover{
-      border-color: rgba(43,89,255,0.25);
-      text-decoration:none;
+      border-color: var(--accent);
+      color: var(--paper);
     }
 
-    .summary{
-      background: rgba(255,255,255,0.65);
-      border: 1px solid rgba(18,26,43,0.12);
-      border-radius: 18px;
-      padding: 18px;
+    /* Sections */
+    .section{
+      padding-top: 8px;
     }
-    .summary h3{ margin: 0 0 10px 0; }
-    .summary ul{ margin: 0; padding-left: 18px; color: var(--muted); }
-    .summary li{ margin: 8px 0; }
+    .callout{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-left: 3px solid var(--accent);
+      background: rgba(43,122,120,0.06);
+      border-radius: 10px;
+      color: var(--muted);
+    }
 
-    /* Cards layout */
-    .two-columns{
+    /* Two pathways: simple grid, not “cards everywhere” */
+    .pathways{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 16px;
+      gap: 26px;
+      margin-top: 18px;
     }
-    .card{
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(18,26,43,0.12);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 12px 30px rgba(18,26,43,0.07);
+    .path{
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
     }
     .label{
-      margin-top: 14px;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--ink);
+      margin-top: 12px;
+      margin-bottom: 4px;
     }
-    ul{ margin: 10px 0 12px 0; padding-left: 18px; color: var(--muted); }
-    li{ margin: 7px 0; }
+    ul{
+      margin: 8px 0 10px 18px;
+      color: var(--muted);
+    }
+    li{ margin: 6px 0; }
 
-    /* New name for the section */
-    .section-title-row{
-      display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 44px;
-    }
-    .section-tag{
-      font-weight: 900;
-      color: var(--accent2);
-      background: rgba(43,89,255,0.10);
-      border: 1px solid rgba(43,89,255,0.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-    }
-
-    /* The block you screenshot */
-    .reality{
+    /* The renamed “reality” block */
+    .constraints{
       margin-top: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.70));
-      border: 1px solid rgba(18,26,43,0.12);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
     }
-    .reality .headline{
-      margin: 0 0 14px 0;
-      font-weight: 900;
+    .constraints .headline{
       color: var(--ink);
-      font-size: 1.08rem;
+      font-weight: 750;
+      margin-bottom: 14px;
     }
-    .reality-grid{
+    .constraint-grid{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 14px;
-      margin-top: 12px;
     }
-    .mini{
-      border-radius: 16px;
-      padding: 16px;
-      background: rgba(246,248,255,0.75);
-      border: 1px solid rgba(18,26,43,0.10);
-      position: relative;
-      overflow: hidden;
+    .constraint{
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: rgba(20,23,31,0.03);
+      border: 1px solid rgba(20,23,31,0.10);
     }
-    .mini::before{
-      content:"";
-      position:absolute;
-      top:-30px; right:-30px;
-      width: 90px; height: 90px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,90,95,0.22), transparent 60%);
-      pointer-events:none;
-    }
-    .mini h3{
-      margin: 0 0 8px 0;
-      font-size: 1.05rem;
+    .constraint .t{
+      font-weight: 850;
       color: var(--ink);
+      margin-bottom: 6px;
     }
-    .mini p{ margin: 0; color: var(--muted); }
+    .constraint .d{
+      margin:0;
+      color: var(--muted);
+    }
 
     /* Contact */
-    .cta{
-      margin-top: 44px;
-      border-radius: 22px;
-      padding: 30px;
-      background: linear-gradient(135deg, rgba(43,89,255,0.13), rgba(255,90,95,0.10));
-      border: 1px solid rgba(18,26,43,0.12);
-      box-shadow: 0 12px 30px rgba(18,26,43,0.08);
+    .contact{
+      margin-top: 46px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
     }
-    .cta p{ max-width: 720px; }
     .email{
       display:inline-block;
       margin-top: 6px;
+      font-weight: 850;
+      color: var(--accent);
+      border-bottom: 0;
+      background: rgba(43,122,120,0.10);
       padding: 10px 12px;
       border-radius: 12px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(18,26,43,0.10);
-      font-weight: 900;
-      color: var(--ink);
+    }
+    .email:hover{
+      background: rgba(43,122,120,0.14);
+      color: var(--accent);
     }
 
     footer{
-      margin-top: 44px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(18,26,43,0.10);
+      margin-top: 46px;
+      padding-top: 14px;
+      border-top: 1px solid var(--soft);
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    @media (max-width: 860px){
-      .hero-inner{ grid-template-columns: 1fr; }
-      .two-columns{ grid-template-columns: 1fr; }
-      .reality-grid{ grid-template-columns: 1fr; }
+    @media (max-width: 920px){
+      .layout{ grid-template-columns: 1fr; gap: 18px; }
+      .rail{ position: static; }
+      .nav{ display:flex; flex-wrap: wrap; gap: 12px; }
+      .nav a{ padding: 8px 10px; border-radius: 999px; background: rgba(20,23,31,0.03); }
+      .pathways{ grid-template-columns: 1fr; }
+      .constraint-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <main>
+<main>
+  <div class="layout">
 
-    <div class="topbar">
+    <!-- Left rail -->
+    <aside class="rail" aria-label="Site navigation">
       <div class="name">Vayola Florus</div>
-      <div class="nav">
+      <div class="role">Practical technology support for nonprofit and public-sector teams</div>
+
+      <nav class="nav">
         <a href="#what">What I do</a>
-        <a href="#reality">The reality</a>
+        <a href="#constraints">What teams are up against</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-      </div>
-    </div>
+      </nav>
 
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="kicker"><span class="dot"></span> Nonprofit and public-sector support</div>
+      <a class="cta" href="#contact">Start a conversation</a>
+    </aside>
 
-          <h1>Practical technology support for nonprofit and public-sector teams</h1>
+    <!-- Main content -->
+    <div>
 
-          <p class="lead">
-            If you are responsible for programs and people, you are likely under pressure to use more technology,
-            including AI, even when time, staff capacity, and support are limited.
-          </p>
+      <!-- HERO -->
+      <section class="section" aria-label="Intro">
+        <h1>Practical technology support for nonprofit and public-sector teams</h1>
+        <div class="accent-rule"></div>
 
-          <p class="lead">
-            I help nonprofit and public-sector organizations make thoughtful, practical decisions about technology,
-            so staff feel prepared and programs actually work for the people they serve.
-          </p>
-
-          <div class="hero-points">
-            <div class="chip">Plain language</div>
-            <div class="chip">No hype</div>
-            <div class="chip">Real program delivery</div>
-          </div>
-
-          <div class="buttons">
-            <a class="btn btn-primary" href="#contact">Start a conversation</a>
-            <a class="btn btn-secondary" href="#what">What I do</a>
-          </div>
-        </div>
-
-        <aside class="summary">
-          <h3>Quick summary</h3>
-          <ul>
-            <li>Build staff confidence with practical training</li>
-            <li>Support public-facing programs that build digital skills</li>
-            <li>Help teams talk about AI clearly, without hype</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section id="what">
-      <h2>What I do</h2>
-      <p>
-        I support organizations in two connected ways. Some teams need one. Many need both.
-      </p>
-
-      <div class="two-columns">
-        <div class="card">
-          <h3>1) Building staff capacity</h3>
-
-          <div class="label">Who this is for</div>
-          <p>
-            Program managers, frontline staff, and leadership teams who are expected to use digital tools as part of their work.
-          </p>
-
-          <div class="label">What this looks like</div>
-          <ul>
-            <li>Practical staff training</li>
-            <li>Role-specific workshops</li>
-            <li>Support as teams adapt to new tools</li>
-            <li>Space to slow down, ask questions, and build confidence</li>
-          </ul>
-
-          <p>
-            This work often includes conversations about AI. I help staff understand what AI can and cannot do,
-            where it fits into their work, and where it does not. The goal is clarity, not hype, so decisions
-            are not driven by pressure or fear of falling behind.
-          </p>
-
-          <div class="label">Why it matters</div>
-          <p>
-            When staff feel prepared, decisions feel safer and day-to-day work becomes more manageable.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>2) Supporting public-facing programs</h3>
-
-          <div class="label">Who this is for</div>
-          <p>
-            Organizations running programs that help community members build digital skills or access technology.
-          </p>
-
-          <div class="label">What this looks like</div>
-          <ul>
-            <li>Program design and planning</li>
-            <li>Facilitating or supporting participant training</li>
-            <li>Adapting content for different language levels</li>
-            <li>Making sure programs work in real life, not just on paper</li>
-          </ul>
-
-          <p>
-            For public-facing programs, this includes being thoughtful about how technology, including AI, is introduced and discussed.
-            I support teams in setting realistic expectations, using clear language, and helping participants understand both opportunities and limits.
-          </p>
-
-          <div class="label">Why it matters</div>
-          <p>
-            Programs are stronger when teaching technology is guided by real outcomes with real audiences in mind.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Renamed section: pick one name; this one flows well -->
-    <section id="reality">
-      <div class="section-title-row">
-        <h2>The reality</h2>
-        <div class="section-tag">What teams are up against</div>
-      </div>
-
-      <div class="reality">
-        <p class="headline">
-          Most organizations are not struggling because they do not care about innovation.
-          They are struggling because responsibility is high and support is limited.
+        <p class="lead">
+          If you are responsible for programs and people, you are likely under pressure to use more technology,
+          including AI, even when time, staff capacity, and support are limited.
         </p>
 
-        <div class="reality-grid">
-          <div class="mini">
-            <h3>Less stress on staff</h3>
-            <p>When people feel prepared, the work gets lighter and decisions get clearer.</p>
+        <p class="lead">
+          I help nonprofit and public-sector organizations make thoughtful, practical decisions about technology,
+          so staff feel prepared and programs actually work for the people they serve.
+        </p>
+
+        <div class="callout">
+          Plain language. No hype. Grounded in real program delivery.
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Start a conversation</a>
+          <a class="btn" href="#what">What I do</a>
+        </div>
+      </section>
+
+      <!-- WHAT I DO -->
+      <section id="what" class="section">
+        <h2>What I do</h2>
+        <p>
+          I support organizations in two connected ways. Some teams need one. Many need both.
+        </p>
+
+        <div class="pathways">
+          <!-- Path 1 -->
+          <div class="path">
+            <h3>1) Building staff capacity</h3>
+
+            <div class="label">Who this is for</div>
+            <p>Program managers, frontline staff, and leadership teams who are expected to use digital tools as part of their work.</p>
+
+            <div class="label">What this looks like</div>
+            <ul>
+              <li>Practical staff training</li>
+              <li>Role-specific workshops</li>
+              <li>Support as teams adapt to new tools</li>
+              <li>Space to slow down, ask questions, and build confidence</li>
+            </ul>
+
+            <p>
+              This work often includes conversations about AI. I help staff understand what AI can and cannot do,
+              where it fits into their work, and where it does not. The goal is clarity, not hype,
+              so decisions are not driven by pressure or fear of falling behind.
+            </p>
+
+            <div class="label">Why it matters</div>
+            <p>When staff feel prepared, decisions feel safer and day-to-day work becomes more manageable.</p>
           </div>
 
-          <div class="mini">
-            <h3>Programs that work in practice</h3>
-            <p>Delivery matters. Training should fit real communities, real schedules, and real needs.</p>
-          </div>
+          <!-- Path 2 -->
+          <div class="path">
+            <h3>2) Supporting public-facing programs</h3>
 
-          <div class="mini">
-            <h3>Clear choices about AI</h3>
-            <p>No panic, no hype. Just clarity about what is useful, what is risky, and what is not worth it.</p>
+            <div class="label">Who this is for</div>
+            <p>Organizations running programs that help community members build digital skills or access technology.</p>
+
+            <div class="label">What this looks like</div>
+            <ul>
+              <li>Program design and planning</li>
+              <li>Facilitating or supporting participant training</li>
+              <li>Adapting content for different language levels</li>
+              <li>Making sure programs work in real life, not just on paper</li>
+            </ul>
+
+            <p>
+              For public-facing programs, this includes being thoughtful about how technology, including AI,
+              is introduced and discussed. I support teams in setting realistic expectations, using clear language,
+              and helping participants understand both opportunities and limits.
+            </p>
+
+            <div class="label">Why it matters</div>
+            <p>Programs are stronger when teaching technology is guided by real outcomes with real audiences in mind.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="about">
-      <h2>About</h2>
+      <!-- WHAT TEAMS ARE UP AGAINST -->
+      <section id="constraints" class="section">
+        <h2>What teams are up against</h2>
 
-      <p>
-        I am Vayola Florus. I work with nonprofit and public-sector organizations navigating increased pressure to use technology responsibly.
-      </p>
+        <div class="constraints">
+          <p class="headline">
+            Most organizations are not struggling because they do not care about innovation.
+            They are struggling because responsibility is high and support is limited.
+          </p>
 
-      <p>
-        I have seen how often teams are asked to adopt new tools without enough time, guidance, or support,
-        and how that pressure affects both staff and the people programs are meant to serve.
-      </p>
+          <div class="constraint-grid">
+            <div class="constraint">
+              <div class="t">Less stress on staff</div>
+              <p class="d">When people feel prepared, the work gets lighter and decisions get clearer.</p>
+            </div>
 
-      <p>
-        My approach is practical and people-centered. I focus on how technology shows up in everyday work,
-        in meetings, programs, classrooms, and community spaces.
-      </p>
+            <div class="constraint">
+              <div class="t">Programs that work in practice</div>
+              <p class="d">Delivery matters. Training should fit real communities, real schedules, and real needs.</p>
+            </div>
 
-      <p>
-        I believe technology should support staff, increase access, and strengthen programs,
-        not overwhelm people or create new barriers.
-      </p>
-    </section>
+            <div class="constraint">
+              <div class="t">Clear choices about AI</div>
+              <p class="d">No panic, no hype. Just clarity about what is useful, what is risky, and what is not worth it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section id="contact" class="cta">
-      <h2>Start a conversation</h2>
-      <p>If this sounds relevant to your work, the next step is a conversation.</p>
-      <div class="email">
-        <a href="mailto:vayola@example.com">vayola@example.com</a>
-      </div>
-    </section>
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <h2>About</h2>
+        <p>
+          I am Vayola Florus. I work with nonprofit and public-sector organizations navigating increased pressure to use technology responsibly.
+        </p>
+        <p>
+          I have seen how often teams are asked to adopt new tools without enough time, guidance, or support,
+          and how that pressure affects both staff and the people programs are meant to serve.
+        </p>
+        <p>
+          My approach is practical and people-centered. I focus on how technology shows up in everyday work,
+          in meetings, programs, classrooms, and community spaces.
+        </p>
+        <p>
+          I believe technology should support staff, increase access, and strengthen programs,
+          not overwhelm people or create new barriers.
+        </p>
+      </section>
 
-    <footer>
-      © Vayola Florus
-    </footer>
+      <!-- CONTACT -->
+      <section id="contact" class="contact section">
+        <h2>Start a conversation</h2>
+        <p>If this sounds relevant to your work, the next step is a conversation.</p>
+        <a class="email" href="mailto:vayola@example.com">vayola@example.com</a>
+      </section>
 
-  </main>
+      <footer>
+        © Vayola Florus
+      </footer>
+
+    </div>
+  </div>
+</main>
 </body>
 </html>
