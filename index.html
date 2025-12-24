@@ -1,411 +1,260 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Vayola Florus | Ethical Technology & Digital Equity Practitioner</title>
-  <meta name="description" content="Vayola Florus helps nonprofits and communities build digital skills and agency, and apply emerging technologies in ways that center people, rights, and community needs." />
-
-  <meta name="robots" content="index,follow" />
-  <link rel="icon" href="data:," />
+  <title>Technology Support for Nonprofits & Public Sector</title>
+  <meta name="description" content="I support nonprofit and public-sector organizations by building staff capacity and supporting public-facing digital skills programs." />
 
   <style>
-    :root{
-      --bg: #0b0f19;
-      --panel: rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.12);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.60);
-      --link: rgba(255,255,255,0.92);
-      --max: 980px;
-      --radius: 18px;
-      --shadow: 0 12px 40px rgba(0,0,0,0.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body{
+    /* ---- Base ---- */
+    body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      line-height: 1.65;
-      color: var(--text);
-      background:
-        radial-gradient(900px 420px at 20% -10%, rgba(120,160,255,0.25), transparent 60%),
-        radial-gradient(900px 520px at 90% 10%, rgba(90,220,190,0.18), transparent 55%),
-        radial-gradient(900px 520px at 30% 100%, rgba(240,160,90,0.10), transparent 55%),
-        var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
     }
 
-    a{ color: var(--link); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); }
-    a:hover{ text-decoration-color: rgba(255,255,255,0.85); }
-
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 64px; }
-
-    /* Top nav */
-    .nav{
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,25,0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .nav-inner{
-      max-width: var(--max);
+    main {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 12px 18px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand{
-      display:flex; gap:10px; align-items:center;
-      font-weight: 650;
-      letter-spacing: 0.2px;
-    }
-    .dot{
-      width: 10px; height: 10px; border-radius: 999px;
-      background: rgba(120,160,255,0.9);
-      box-shadow: 0 0 0 6px rgba(120,160,255,0.15);
-    }
-    .nav-links{
-      display:flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end;
-      font-size: 14px;
-    }
-    .nav-links a{
-      text-decoration: none;
-      color: var(--muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-    .nav-links a:hover{
-      color: var(--text);
-      border-color: rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
+      padding: 32px 20px;
     }
 
-    /* Hero */
-    .hero{
-      padding: 56px 0 18px;
+    h1, h2, h3 {
+      line-height: 1.3;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    ul {
+      margin: 0.5rem 0 1rem 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      max-width: 720px;
+    }
+
+    .section {
+      margin-top: 3.5rem;
+    }
+
+    .two-columns {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 860px){
-      .hero{ grid-template-columns: 1fr; padding-top: 28px; }
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
-      font-size: 14px;
-      width: fit-content;
-    }
-    h1{
-      margin: 14px 0 8px;
-      font-size: 42px;
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-    }
-    @media (max-width: 420px){
-      h1{ font-size: 34px; }
-    }
-    .subtitle{
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0 0 14px;
-    }
-    .lead{
-      margin: 0;
-      color: var(--text);
-      font-size: 18px;
-    }
-
-    .card{
-      border: 1px solid rgba(255,255,255,0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-    .mini{
-      box-shadow: none;
-      background: rgba(255,255,255,0.04);
-    }
-    .meta{
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0 0 10px;
-    }
-    .pillrow{
-      display:flex; gap:10px; flex-wrap: wrap; margin-top: 12px;
-    }
-    .pill{
-      font-size: 13px;
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      padding: 6px 10px;
-      border-radius: 999px;
-      text-decoration: none;
-    }
-    .pill:hover{
-      color: var(--text);
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    /* Sections */
-    section{ padding: 18px 0; }
-    .section-title{
-      margin: 0 0 10px;
-      font-size: 20px;
-      letter-spacing: -0.2px;
-    }
-    .section-desc{
-      margin: 0 0 14px;
-      color: var(--muted);
-    }
-
-    .grid{
-      display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
+      gap: 32px;
+      margin-top: 1.5rem;
     }
 
-    .role{
-      margin: 0;
-      font-weight: 650;
-      font-size: 16px;
-    }
-    .org{
-      color: var(--muted);
-      margin: 4px 0 10px;
-      font-size: 14px;
-    }
-    .list{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .list li{ margin: 8px 0; }
-
-    .divider{
-      height: 1px;
-      background: rgba(255,255,255,0.10);
-      margin: 18px 0;
+    .box {
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
     }
 
-    footer{
-      margin-top: 30px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      color: var(--muted2);
-      font-size: 14px;
+    .label {
+      font-weight: 600;
+      margin-top: 1rem;
     }
 
-    /* Accessibility */
-    .sr-only{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    .cta {
+      margin-top: 3rem;
+      padding: 24px;
+      border-top: 2px solid #000;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media (max-width: 700px) {
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="nav" role="navigation" aria-label="Primary">
-    <div class="nav-inner">
-      <div class="brand"><span class="dot" aria-hidden="true"></span>Vayola Florus</div>
-      <div class="nav-links">
-        <a href="#what">What I Do</a>
-        <a href="#experience">Experience</a>
-        <a href="#focus">Current Focus</a>
-        <a href="#focus">Contact</a>
-      </div>
-    </div>
-  </div>
+  <main>
 
-  <main class="wrap">
     <!-- HERO -->
-    <div class="hero" id="top">
-      <div>
-        <div class="badge" aria-label="Role">
-          Ethical Technology &amp; Digital Equity Practitioner
-        </div>
-        <h1>Vayola Florus</h1>
-        <p class="subtitle">
-          I equip nonprofits, communities, and teams with practical digital skills and responsible technology adoption.
-        </p>
-        <p class="lead">
-          I drive nonprofits and communities to build digital skills and agency, and apply new and emerging technologies in ways that center people, rights, and community needs.
-        </p>
+    <section>
+      <h1>
+        Supporting nonprofit and public-sector teams to use technology responsibly.
+      </h1>
 
-        <div class="pillrow" aria-label="Quick links">
-          <a class="pill" href="mailto:yourname@email.com">Email</a>
-          <a class="pill" href="https://www.linkedin.com/in/vayola-florus-1658b02a3/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill" href="https://twitter.com/yourname" target="_blank" rel="noreferrer">Twitter / X</a>
-          <a class="pill" href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </div>
-
-      <aside class="card mini" aria-label="At a glance" style="
-        background: rgba(17, 24, 39, 0.55);
-        color: #e5e7eb;
-        border: 1px solid rgba(255,255,255,0.10);
-        border-radius: 16px;
-        padding: 18px;
-        box-shadow:
-          0 12px 30px rgba(0,0,0,0.55),
-          0 0 0 1px rgba(99,102,241,0.35);
-        backdrop-filter: blur(10px);
-      ">
-        <!-- Very small photo -->
-        <img
-          src="profile.jpg"
-          alt="Portrait of Vayola Florus"
-          style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:10px;display:block;"
-        />
-
-        <p class="meta"><strong>WAYS I SUPPORT TEAMS AND INDIVIDUALS</strong></p>
-        <ul class="list">
-            <li><strong>Set up and streamline tools and workflows</strong> <br> 90-minute tech reset or short term support</li>
-            <li><strong>Deliver tech training/coaching</strong> <br> Facilitated tech adoption & workshops</li>
-            <li><strong>Design clear and implementable program</strong> <br> Program & curriculum design sprints</li>
-        </ul>
-        <a
-          href="mailto:youremail@example.com?subject=Work%20With%20Me%20Inquiry"
-          class="button primary"
-          style="
-            display:block;
-          text-align:center;
-          margin-top:12px;
-          padding:10px 12px;
-          border-radius:12px;
-          background: rgba(99,102,241,0.18);
-          border: 1px solid rgba(99,102,241,0.45);
-          color:#eef2ff;
-          text-decoration:none;
-          font-weight:600;
-        ">
-          Work with me
-        </a>
-      </aside>
-    </div>
-
-    <div class="divider" role="separator" aria-hidden="true"></div>
-
-    <!-- WHAT I DO -->
-    <section id="what" aria-labelledby="what-title">
-      <h2 class="section-title" id="what-title">What I Do</h2>
-      <p class="section-desc">
-        I design and facilitate technology training and coaching for frontline staff and community members. My work focuses on applied digital literacy and responsible technology adoption in workplace and community settings.
+      <p class="intro">
+        If you’re responsible for programs and people, you’re likely under pressure to use more
+        technology and AI — even when time, staff capacity, and support are limited.
       </p>
 
-      <div class="grid">
-        <div class="card">
-          <p class="role">Training &amp; Facilitation</p>
-          <p class="org">Workshops • 1:1 support • Cohorts</p>
-          <ul class="list">
-            <li>Digital skills training that is practical, accessible, and context-driven</li>
-            <li>Workshops for staff and residents, plus coaching and technical support</li>
-            <li>Learning experiences designed to build confidence and agency</li>
+      <p class="intro">
+        I support nonprofit and public-sector organizations by building staff capacity and
+        supporting public-facing programs that help community members build practical digital skills.
+      </p>
+    </section>
+
+    <!-- WHAT I DO -->
+    <section class="section">
+      <h2>What I do</h2>
+
+      <p>
+        I support organizations in two connected ways. Some teams need one. Many need both.
+      </p>
+
+      <div class="two-columns">
+        <div class="box">
+          <h3>1. Building staff capacity</h3>
+
+          <p class="label">Who this is for</p>
+          <p>
+            Program managers, frontline staff, and leadership teams who are expected to use new
+            digital tools or AI as part of their work.
+          </p>
+
+          <p class="label">What I support</p>
+          <ul>
+            <li>Practical training for staff</li>
+            <li>Workshops adapted to real roles and workflows</li>
+            <li>Support as teams adjust to new tools</li>
+            <li>Space to slow down and ask questions</li>
           </ul>
+
+          <p class="label">Why it matters</p>
+          <p>
+            When staff feel prepared, decisions feel safer and programs run more smoothly.
+          </p>
         </div>
 
-        <div class="card">
-          <p class="role">Responsible Technology Adoption</p>
-          <p class="org">Nonprofits • Community orgs</p>
-          <ul class="list">
-            <li>Support teams adopting tools that improve access, efficiency, and accountability</li>
-            <li>Guidance that centers rights, risk awareness, and community needs</li>
-            <li>Practical frameworks for ethical use of emerging technologies</li>
+        <div class="box">
+          <h3>2. Supporting public-facing programs</h3>
+
+          <p class="label">Who this is for</p>
+          <p>
+            Organizations running programs that help community members build digital skills or
+            access technology.
+          </p>
+
+          <p class="label">What I support</p>
+          <ul>
+            <li>Program design and planning</li>
+            <li>Facilitating or supporting participant training</li>
+            <li>Adapting content for different language levels</li>
+            <li>Making sure programs work in real life</li>
           </ul>
+
+          <p class="label">Why it matters</p>
+          <p>
+            Programs work better when they reflect real needs, real constraints, and real people.
+          </p>
         </div>
       </div>
+
+      <p style="margin-top:1.5rem;">
+        Because I work across staff capacity and program delivery, I help organizations move from
+        good intentions to real impact.
+      </p>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" aria-labelledby="exp-title">
-      <h2 class="section-title" id="exp-title">Relevant Professional Experience</h2>
+    <!-- WHO I WORK WITH -->
+    <section class="section">
+      <h2>Who I work with</h2>
 
-      <div class="card">
-        <p class="role">City of Boston — Department of Innovation and Technology</p>
-        <p class="org">Digital Equity &amp; Technology Training</p>
-        <p class="section-desc" style="margin-bottom: 0;">
-          In my current role with the City of Boston, I work at the intersection of public service delivery, digital equity, and organizational technology adoption. I design and facilitate technology trainings for city staff and residents, support community-based organizations through digital equity initiatives, and help teams adopt new tools in ways that improve access, efficiency, and accountability.
-        </p>
-        <ul class="list">
-          <li>Leading digital literacy pilots, facilitating workshops, and providing one-on-one technical support</li>
-          <li>Coordinating cross-department partnerships</li>
-          <li>Contributing to public-facing digital equity resources and partner directories</li>
-        </ul>
-        <p class="section-desc" style="margin-top: 10px;">
-          This role grounds my work in the realities of public-sector constraints, community needs, and high-impact technology use.
-        </p>
-      </div>
+      <p>
+        I work primarily with people who have responsibility for staff, programs, and outcomes,
+        including:
+      </p>
 
-      <div class="card" style="margin-top: 14px;">
-        <p class="role">Immigration and Family Services Institute (IFSI)</p>
-        <p class="org">Adult Education &amp; Workforce Development</p>
-        <p class="section-desc" style="margin-bottom: 0;">
-          Previously, I coordinated large-scale adult education and workforce development programs serving immigrant and adult learners across Greater Boston. I managed end-to-end program operations, expanded enrollment, and integrated digital literacy, online safety, and technology confidence into education and job-readiness curricula.
-        </p>
-        <ul class="list">
-          <li>Collaborated with instructors, learners, and partner organizations to support real-world digital navigation needs</li>
-          <li>Focused on accessibility, dignity, and practical relevance for learners most impacted by the digital divide</li>
-        </ul>
-        <p class="section-desc" style="margin-top: 10px;">
-          This experience continues to inform my approach to ethical technology education.
-        </p>
-      </div>
+      <ul>
+        <li>Program managers</li>
+        <li>Executive directors</li>
+        <li>Nonprofit leaders</li>
+        <li>Development directors</li>
+        <li>Public-sector teams</li>
+      </ul>
     </section>
 
-    <!-- CURRENT FOCUS -->
-    <section id="focus" aria-labelledby="focus-title">
-      <h2 class="section-title" id="focus-title">Current Focus</h2>
-      <div class="card">
-        <p class="section-desc" style="margin-bottom: 12px;">
-          I’m currently focused on how AI is entering nonprofit and public-sector workflows and how to support people in using these tools responsibly, with awareness of power, risk, and agency.
-        </p>
+    <!-- ABOUT -->
+    <section class="section">
+      <h2>About</h2>
 
-        <p class="role" style="margin-bottom: 6px;">Selected tools and programs</p>
-        <ul class="list">
-          <li><a href="#" aria-label="90-Minute Responsible AI Workshop Agenda">90-Minute Responsible AI Workshop Agenda</a></li>
-          <li><a href="#" aria-label="Youth AI Lab for Social Impact">Youth AI Lab for Social Impact — cohort-based program</a></li>
-          <li><a href="#" aria-label="Guidelines for Responsible AI Use in Community Programs">Guidelines for Responsible AI Use in Community Programs</a></li>
-        </ul>
-      </div>
+      <p>
+        I work with nonprofit and public-sector organizations that are navigating increased pressure
+        to use technology and AI responsibly.
+      </p>
+
+      <p>
+        I’ve seen how often teams are asked to adopt new tools without enough time, guidance, or
+        support — and how that pressure affects both staff and the people programs are meant to serve.
+      </p>
+
+      <p>
+        My approach is practical and people-centered. I focus on how technology shows up in everyday
+        work — in meetings, programs, classrooms, and community spaces.
+      </p>
+
+      <p>
+        I believe technology should support staff, increase access, and strengthen programs —
+        not overwhelm people or create new barriers.
+      </p>
     </section>
 
-        <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 class="section-title" id="contact-title">Contact</h2>
-      <div class="pillrow" aria-label="Quick links">
-          <a class="pill" href="mailto:yourname@email.com">Email</a>
-          <a class="pill" href="https://www.linkedin.com/in/vayola-florus-1658b02a3/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill" href="https://twitter.com/yourname" target="_blank" rel="noreferrer">Twitter / X</a>
-          <a class="pill" href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Start a conversation</h2>
+
+      <p>
+        If this sounds relevant to your work, the next step is a conversation.
+      </p>
+
+      <p>
+        You can reach me at:
+        <br />
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+      </p>
     </section>
 
     <footer>
-      <span>© <span id="year"></span> Vayola Florus</span>
-      <span class="sr-only">End of page</span>
+      <p>© Your Name</p>
     </footer>
+
   </main>
+</body>
+</html>
 
-
-    <footer>
