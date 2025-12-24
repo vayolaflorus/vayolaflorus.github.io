@@ -4,200 +4,211 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vayola Florus — Practical Technology Support</title>
-  <meta name="description" content="Vayola Florus provides practical technology and AI support for nonprofit and public-sector teams." />
+  <meta name="description" content="Vayola Florus provides practical technology and AI support for nonprofit and public-sector teams—staff capacity and public-facing digital skills programs." />
 
   <style>
-    :root {
-      --bg: #f7f8f6;
-      --text: #1f2a2e;
-      --muted: #4b5f66;
-      --accent: #3b7c7a;       /* muted teal */
-      --accent-soft: #e6f0ef;
-      --card: #ffffff;
-      --border: #d9e2e0;
+    :root{
+      --bg:#f7f8f6;
+      --text:#1f2a2e;
+      --muted:#4b5f66;
+      --accent:#3b7c7a;          /* muted teal */
+      --accent-dark:#2f6765;
+      --accent-soft:#e6f0ef;
+      --card:#ffffff;
+      --border:#d9e2e0;
+      --sand:#f2efe7;
     }
 
-    body {
-      margin: 0;
+    body{
+      margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      background: radial-gradient(900px 520px at 10% 10%, var(--accent-soft), transparent 55%),
+                  radial-gradient(900px 520px at 90% 20%, #fff1dd, transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
     }
 
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:40px 20px 64px;
     }
 
-    h1, h2, h3 {
-      line-height: 1.25;
-      margin-top: 0;
-    }
+    h1,h2,h3{ line-height:1.25; margin-top:0; }
+    h1{ font-size:2.4rem; margin-bottom:0.8rem; letter-spacing:-0.02em; }
+    h2{ font-size:1.7rem; margin-top:4rem; margin-bottom:1rem; }
+    h3{ font-size:1.2rem; margin-top:2rem; margin-bottom:0.6rem; }
 
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 1.7rem;
-      margin-top: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin: 0.5rem 0 1.1rem;
-    }
-
-    a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    p{ margin:0.5rem 0 1.1rem; }
+    a{ color:var(--accent); font-weight:700; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
     /* Hero */
-    .hero {
+    .hero{
       background: linear-gradient(135deg, var(--accent-soft), #ffffff);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 42px 34px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:44px 34px;
     }
 
-    .hero .subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
+    .pill{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
       background: rgba(59,124,122,0.12);
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
+      color: var(--accent-dark);
+      border: 1px solid rgba(59,124,122,0.22);
+      font-weight:800;
+      font-size:0.9rem;
+      margin-bottom:12px;
     }
 
-    .hero-points {
-      margin-top: 1rem;
-      font-weight: 600;
-      color: var(--muted);
+    .subtitle{
+      max-width:780px;
+      font-size:1.06rem;
+      color:var(--muted);
     }
 
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 22px;
+    .hero-points{
+      margin-top:0.8rem;
+      font-weight:700;
+      color:var(--muted);
     }
 
-    .btn {
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 2px solid var(--accent);
+    .buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:22px;
     }
 
-    .btn-primary {
+    .btn{
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:800;
+      border:2px solid var(--accent);
+      display:inline-block;
+    }
+
+    .btn-primary{
       background: var(--accent);
-      color: #ffffff;
+      color:#ffffff;
+    }
+    .btn-primary:hover{
+      background: var(--accent-dark);
+      text-decoration:none;
     }
 
-    .btn-primary:hover {
-      background: #2f6765;
-      text-decoration: none;
-    }
-
-    .btn-secondary {
+    .btn-secondary{
       background: transparent;
       color: var(--accent);
     }
-
-    .btn-secondary:hover {
+    .btn-secondary:hover{
       background: rgba(59,124,122,0.1);
-      text-decoration: none;
+      text-decoration:none;
     }
 
-    /* Sections */
-    .section {
-      margin-top: 4rem;
-    }
+    /* Layout */
+    .section{ margin-top:4rem; }
 
-    .two-columns {
-      display: grid;
+    .two-columns{
+      display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 1.5rem;
+      gap:28px;
+      margin-top:1.5rem;
     }
 
-    .card {
+    .card{
       background: var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:24px;
+      box-shadow: 0 12px 30px rgba(31,42,46,0.06);
+    }
+
+    .label{
+      margin-top:1rem;
+      font-weight:900;
+      color: var(--accent-dark);
+    }
+
+    ul{
+      margin:0.5rem 0 1rem 1.2rem;
+      padding:0;
+    }
+
+    li{
+      margin-bottom:0.45rem;
+      color:var(--muted);
+    }
+
+    /* Why / Stakes block */
+    .stakes{
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      margin-top: 2rem;
+    }
+
+    .stakes p{
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      font-weight: 650;
+    }
+
+    .stakes-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+      margin-top: 14px;
+    }
+
+    .stake-card{
+      background: rgba(255,255,255,0.75);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px;
+      padding: 16px;
     }
 
-    .label {
-      margin-top: 1rem;
-      font-weight: 700;
-      color: var(--accent);
+    .stake-title{
+      font-weight: 900;
+      margin: 0 0 6px 0;
+      color: var(--accent-dark);
     }
 
-    ul {
-      margin: 0.5rem 0 1rem 1.2rem;
-    }
-
-    li {
-      margin-bottom: 0.4rem;
+    .stake-text{
+      margin: 0;
       color: var(--muted);
     }
 
     /* Contact */
-    .cta {
-      margin-top: 4rem;
-      padding: 34px;
-      background: var(--accent);
-      color: #ffffff;
-      border-radius: 14px;
+    .cta{
+      margin-top:4rem;
+      padding:34px;
+      border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color:#ffffff;
     }
 
-    .cta h2 {
-      margin-top: 0;
-      color: #ffffff;
+    .cta h2{ margin-top:0; color:#ffffff; }
+    .cta p{ color: rgba(255,255,255,0.92); }
+    .cta a{ color:#ffffff; text-decoration: underline; }
+
+    footer{
+      margin-top:4rem;
+      padding-top:1.4rem;
+      border-top:1px solid var(--border);
+      font-size:0.95rem;
+      color:var(--muted);
     }
 
-    .cta a {
-      color: #ffffff;
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 4rem;
-      padding-top: 1.4rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    @media (max-width: 760px) {
-      h1 { font-size: 2rem; }
-      .two-columns { grid-template-columns: 1fr; }
-      .hero { padding: 30px 22px; }
+    @media (max-width: 780px){
+      h1{ font-size:2rem; }
+      .hero{ padding:30px 22px; }
+      .two-columns{ grid-template-columns: 1fr; }
+      .stakes-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -212,18 +223,16 @@
     <h1>Practical technology support for nonprofit and public-sector teams</h1>
 
     <p class="subtitle">
-      If you’re responsible for programs and people, you’re likely under pressure to use more
-      technology — including AI — even when time, staff capacity, and support are limited.
+      If you’re responsible for programs and people, you’re likely under pressure to use more technology —
+      including AI — even when time, staff capacity, and support are limited.
     </p>
 
     <p class="subtitle">
-      I help nonprofit and public-sector organizations make thoughtful, practical decisions about
-      technology, so staff feel prepared and programs actually work for the people they serve.
+      I help nonprofit and public-sector organizations make thoughtful, practical decisions about technology,
+      so staff feel prepared and programs actually work for the people they serve.
     </p>
 
-    <div class="hero-points">
-      Plain language. · No hype. · Grounded in real program delivery.
-    </div>
+    <div class="hero-points">Plain language. · No hype. · Grounded in real program delivery.</div>
 
     <div class="buttons">
       <a href="#contact" class="btn btn-primary">Start a conversation</a>
@@ -241,13 +250,13 @@
     </p>
 
     <div class="two-columns">
+      <!-- Pathway 1 -->
       <div class="card">
         <h3>1) Building staff capacity</h3>
 
         <div class="label">Who this is for</div>
         <p>
-          Program managers, frontline staff, and leadership teams who are expected to use digital
-          tools as part of their work.
+          Program managers, frontline staff, and leadership teams who are expected to use digital tools as part of their work.
         </p>
 
         <div class="label">What this looks like</div>
@@ -259,23 +268,24 @@
         </ul>
 
         <p>
-          This work often includes conversations about AI. I help staff understand what AI can and
-          can’t do, where it fits into their work, and where it doesn’t — so decisions aren’t driven
-          by pressure or fear of falling behind.
+          This work often includes conversations about AI. I help staff understand what AI can and can’t do,
+          where it fits into their work, and where it doesn’t. The goal is clarity — not hype — so decisions
+          aren’t driven by pressure or fear of falling behind.
         </p>
 
+        <div class="label">Why it matters</div>
         <p>
           When staff feel prepared, decisions feel safer and day-to-day work becomes more manageable.
         </p>
       </div>
 
+      <!-- Pathway 2 -->
       <div class="card">
         <h3>2) Supporting public-facing programs</h3>
 
         <div class="label">Who this is for</div>
         <p>
-          Organizations running programs that help community members build digital skills or access
-          technology.
+          Organizations running programs that help community members build digital skills or access technology.
         </p>
 
         <div class="label">What this looks like</div>
@@ -287,14 +297,40 @@
         </ul>
 
         <p>
-          This includes being thoughtful about how technology — including AI — is introduced and
-          discussed. I support teams in setting realistic expectations and using clear language.
+          For public-facing programs, this includes being thoughtful about how technology — including AI —
+          is introduced and discussed. I support teams in setting realistic expectations, using clear language,
+          and helping participants understand both opportunities and limits.
         </p>
 
+        <div class="label">Why it matters</div>
         <p>
-          Programs are stronger when teaching technology is guided by real outcomes with real
-          audiences in mind.
+          Programs are stronger when teaching technology is guided by real outcomes with real audiences in mind.
         </p>
+      </div>
+    </div>
+
+    <!-- Stakes / Why it matters (global) -->
+    <div class="stakes">
+      <p>
+        Most organizations aren’t struggling because they “don’t care about innovation.”
+        They’re struggling because responsibility is high and support is limited.
+      </p>
+
+      <div class="stakes-grid">
+        <div class="stake-card">
+          <div class="stake-title">Less stress on staff</div>
+          <p class="stake-text">When people feel prepared, the work gets lighter and decisions get clearer.</p>
+        </div>
+
+        <div class="stake-card">
+          <div class="stake-title">Programs that work in practice</div>
+          <p class="stake-text">Delivery matters. Training should fit real communities, real schedules, and real needs.</p>
+        </div>
+
+        <div class="stake-card">
+          <div class="stake-title">Clear choices about AI</div>
+          <p class="stake-text">No panic, no hype. Just clarity about what’s useful, what’s risky, and what’s not worth it.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -304,18 +340,17 @@
     <h2>About</h2>
 
     <p>
-      I’m Vayola Florus. I work with nonprofit and public-sector organizations navigating increased
-      pressure to use technology responsibly.
+      I’m Vayola Florus. I work with nonprofit and public-sector organizations navigating increased pressure to use technology responsibly.
     </p>
 
     <p>
-      I’ve seen how often teams are asked to adopt new tools without enough time, guidance, or
-      support — and how that pressure affects both staff and the people programs are meant to serve.
+      I’ve seen how often teams are asked to adopt new tools without enough time, guidance, or support —
+      and how that pressure affects both staff and the people programs are meant to serve.
     </p>
 
     <p>
-      My approach is practical and people-centered. I focus on how technology shows up in everyday
-      work — in meetings, programs, classrooms, and community spaces.
+      My approach is practical and people-centered. I focus on how technology shows up in everyday work —
+      in meetings, programs, classrooms, and community spaces.
     </p>
 
     <p>
@@ -328,12 +363,10 @@
   <section id="contact" class="cta">
     <h2>Start a conversation</h2>
     <p>If this sounds relevant to your work, the next step is a conversation.</p>
-    <p>Email me at <a href="mailto:vayola@example.com">vayola@example.com</a></p>
+    <p>You can reach me at: <a href="mailto:vayola@example.com">vayola@example.com</a></p>
   </section>
 
-  <footer>
-    © Vayola Florus
-  </footer>
+  <footer>© Vayola Florus</footer>
 
 </main>
 </body>
