@@ -8,137 +8,104 @@
 
   <style>
     :root{
-      --bg: #fbfbf9;
-      --paper:#ffffff;
+      --bg:#ffffff;
       --text:#111827;
       --muted:#4b5563;
-      --border:#e7e5e4;
-      --shadow: 0 1px 0 rgba(17,24,39,.04), 0 12px 30px rgba(17,24,39,.06);
-      --accent:#1f4d3a; /* deep green */
-      --max: 980px;
-      --radius: 18px;
+      --border:#e5e7eb;
+      --max:820px;
+
+      /* Unique-but-classic accent (deep ink green) */
+      --accent:#1f4d3a;
+      --accentSoft: rgba(31,77,58,.14);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box;}
     body{
       margin:0;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(31,77,58,.08), transparent 60%),
-                  radial-gradient(900px 500px at 90% 10%, rgba(17,24,39,.05), transparent 55%),
-                  var(--bg);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.75;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
     }
 
     main{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 72px 18px 92px;
+      padding: 84px 18px 96px;
+      position: relative;
     }
 
-    /* Subtle “editorial sheet” */
-    .sheet{
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-
-    .sheetInner{
-      padding: 36px 28px;
-    }
-
-    /* Top header */
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap: 20px;
-      flex-wrap:wrap;
+    /* The “signature” element: a quiet left ink line + fade */
+    main::before{
+      content:"";
+      position:absolute;
+      left: 6px;
+      top: 72px;
+      bottom: 72px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--accentSoft) 12%,
+        var(--accent) 50%,
+        var(--accentSoft) 88%,
+        transparent
+      );
+      border-radius: 999px;
+      pointer-events:none;
     }
 
     h1{
       margin:0;
-      font-size: clamp(2.1rem, 3.4vw, 3.1rem);
-      letter-spacing:-0.03em;
-      line-height:1.08;
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
     }
 
     .title{
       margin-top: 10px;
       font-weight: 700;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.06rem;
     }
 
-    /* Links as classic “chips” */
+    /* Simple link row, not pills */
     .pillrow{
+      margin-top: 12px;
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
+      gap: 12px;
       align-items:center;
-      margin-top: 6px;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #fff;
-      text-decoration:none;
-      font-weight: 750;
-      color: var(--text);
-      transition: transform .12s ease, border-color .12s ease;
-      white-space:nowrap;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: #d6d3d1;
-    }
-
-    /* A small right-side “meta rail” that adds curiosity */
-    .meta{
-      min-width: 240px;
-      padding-left: 18px;
-      border-left: 1px solid var(--border);
-    }
-    .metaLabel{
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color:#6b7280;
+    .pillrow a{
       font-weight: 800;
-      margin-bottom: 10px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 2px;
     }
-    .metaLine{
-      color: var(--muted);
-      font-size: .95rem;
-      margin: 0 0 10px 0;
+    .pillrow a:hover{
+      border-bottom-color: var(--accent);
+      color: var(--accent);
     }
 
-    /* Divider */
+    /* Classic divider with a tiny accent notch */
     .rule{
       height: 1px;
       background: var(--border);
-      margin: 26px 0 26px;
+      margin: 26px 0 30px;
+      position: relative;
     }
-
-    /* Body layout: main + sidebar on wide screens */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 22px;
-    }
-    @media (min-width: 900px){
-      .grid{
-        grid-template-columns: 2fr 1fr;
-        gap: 26px;
-      }
+    .rule::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:-1px;
+      width: 64px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 999px;
     }
 
     h2{
@@ -151,156 +118,100 @@
     p{
       margin: 0 0 14px 0;
       color: var(--muted);
-      font-size: 1.06rem;
+      font-size: 1.08rem;
     }
 
-    /* Keep your bullets, but make them feel “designed” */
+    /* Keep bullets but make them feel intentional */
     ul{
       margin: 18px 0 24px 0;
       padding:0;
       list-style:none;
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 750;
     }
     li{
       margin: 10px 0;
       padding-left: 22px;
-      position:relative;
+      position: relative;
     }
     li::before{
       content:"";
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 999px;
       background: var(--accent);
       position:absolute;
       left:0;
-      top: 0.62em;
+      top: 0.64em;
+      box-shadow: 0 0 0 4px rgba(31,77,58,.08);
     }
 
-    /* CTA: classic underline, but with an accent “ink” */
+    /* Primary link style (for “Start a conversation”) */
     a{
       color: var(--text);
       text-decoration: underline;
-      text-underline-offset: 5px;
       text-decoration-thickness: 2px;
-      font-weight: 800;
+      text-underline-offset: 5px;
+      font-weight: 850;
     }
     a:hover{
+      color: var(--accent);
       text-decoration-color: var(--accent);
     }
 
-    /* Sidebar card for calm structure (no new text required—just layout) */
-    .sideCard{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 16px;
-      background: #fff;
-    }
-    .kicker{
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color:#6b7280;
-      font-weight: 850;
-      margin: 0 0 10px 0;
-    }
-    .note{
-      margin:0;
-      color: var(--muted);
-      font-size: .98rem;
-    }
-
     footer{
-      margin-top: 26px;
+      margin-top: 64px;
       padding-top: 16px;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    /* Small screen polish */
+    /* Small screen tweaks */
     @media (max-width: 520px){
-      .sheetInner{ padding: 28px 18px; }
-      .meta{ border-left:none; padding-left:0; }
+      main{ padding: 72px 16px 86px; }
+      main::before{ left: 4px; top: 60px; bottom: 60px; }
+      .pillrow{ gap: 10px; }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <div class="sheet">
-      <div class="sheetInner">
+    <h1>Vayola Florus</h1>
+    <div class="title">Nonprofit Technologist</div>
 
-        <header>
-          <div>
-            <h1>Vayola Florus</h1>
-            <div class="title">Nonprofit Technologist</div>
-
-            <div class="pillrow" aria-label="Quick links">
-              <a class="pill" href="mailto:yourname@email.com">Email</a>
-              <a class="pill" href="https://www.linkedin.com/in/vayola-florus-1658b02a3/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a class="pill" href="https://twitter.com/yourname" target="_blank" rel="noreferrer">Twitter / X</a>
-              <a class="pill" href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-          </div>
-
-          <aside class="meta" aria-label="Site meta">
-            <div class="metaLabel">Approach</div>
-            <p class="metaLine">Practical support for teams under real constraints.</p>
-            <p class="metaLine">Technology and AI without the overwhelm.</p>
-          </aside>
-        </header>
-
-        <div class="rule"></div>
-
-        <div class="grid">
-          <section>
-            <h2>Technology support that’s practical, clear, and people-centered</h2>
-
-            <p>
-              If you’re responsible for programs and people, you’re likely under pressure to use more technology
-              and AI even when time, staff capacity, and support are limited.
-            </p>
-
-            <p>
-              I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting
-              public-facing programs that help community members build practical digital skills.
-            </p>
-
-            <ul>
-              <li>Plain language.</li>
-              <li>No hype.</li>
-              <li>Grounded in real program delivery.</li>
-            </ul>
-
-            <p><a href="mailto:vayola.florus01@gmail.com">Start a conversation</a></p>
-
-            <footer>© Vayola Florus</footer>
-          </section>
-
-          <aside>
-            <div class="sideCard" aria-label="Sidebar">
-              <div class="kicker">Contact</div>
-              <p class="note">
-                <a href="mailto:vayola.florus01@gmail.com">Start a conversation</a>
-              </p>
-
-              <div class="rule" style="margin:16px 0;"></div>
-
-              <div class="kicker">Links</div>
-              <div class="pillrow">
-                <a class="pill" href="mailto:yourname@email.com">Email</a>
-                <a class="pill" href="https://www.linkedin.com/in/vayola-florus-1658b02a3/" target="_blank" rel="noreferrer">LinkedIn</a>
-                <a class="pill" href="https://twitter.com/yourname" target="_blank" rel="noreferrer">Twitter / X</a>
-                <a class="pill" href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-      </div>
+    <div class="pillrow" aria-label="Quick links">
+      <a href="mailto:yourname@email.com">Email</a>
+      <a href="https://www.linkedin.com/in/vayola-florus-1658b02a3/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://twitter.com/yourname" target="_blank" rel="noreferrer">Twitter / X</a>
+      <a href="https://github.com/yourname" target="_blank" rel="noreferrer">GitHub</a>
     </div>
+
+    <div class="rule"></div>
+
+    <h2>Technology support that’s practical, clear, and people-centered</h2>
+
+    <p>
+      If you’re responsible for programs and people, you’re likely under pressure to use more technology
+      and AI even when time, staff capacity, and support are limited.
+    </p>
+
+    <p>
+      I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting
+      public-facing programs that help community members build practical digital skills.
+    </p>
+
+    <ul>
+      <li>Plain language.</li>
+      <li>No hype.</li>
+      <li>Grounded in real program delivery.</li>
+    </ul>
+
+    <p><a href="mailto:vayola.florus01@gmail.com">Start a conversation</a></p>
+
+    <footer>© Vayola Florus</footer>
   </main>
 </body>
 </html>
+
