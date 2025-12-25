@@ -1,409 +1,667 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Nonprofit Technologist — practical, clear, people-centered technology support."/>
   <title>Vayola Florus — Nonprofit Technologist</title>
-  <meta name="description" content="Technology support that’s practical, clear, and people-centered" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      /* ONE bold accent color */
-      --accent:#2F6BFF;
-
-      /* neutrals */
-      --bg:#0B0F17;
-      --surface:#0E1422;
-      --text:#EEF3FF;
-      --muted:#B8C2DA;
-      --line:rgba(238,243,255,.12);
-
-      --max:1160px;
-      --gutter:28px;
+      --bg:#0b0d10;
+      --fg:#e9eef5;
+      --muted:rgba(233,238,245,.72);
+      --muted2:rgba(233,238,245,.52);
+      --line:rgba(233,238,245,.14);
+      --line2:rgba(233,238,245,.09);
+      --accent:#8ff0ff;
+      --accent2:#b9ffb0;
+      --shadow: 0 16px 50px rgba(0,0,0,.45);
       --radius:16px;
-      --font:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-
-      --topbar-h:64px;
+      --max:1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family:var(--font);
-      color:var(--text);
+      color:var(--fg);
       background:
-        radial-gradient(900px 520px at 12% -10%, rgba(47,107,255,.18), transparent 55%),
-        radial-gradient(700px 520px at 90% 10%, rgba(47,107,255,.10), transparent 60%),
-        var(--bg);
-      line-height:1.55;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+        radial-gradient(1200px 800px at 12% 10%, rgba(143,240,255,.10), transparent 55%),
+        radial-gradient(900px 600px at 85% 20%, rgba(185,255,176,.09), transparent 60%),
+        radial-gradient(800px 600px at 65% 95%, rgba(143,240,255,.06), transparent 55%),
+        linear-gradient(180deg, #07090c 0%, #0b0d10 35%, #07090c 100%);
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
 
-    /* ===== Top bar ===== */
-    header{
-      position:sticky; top:0; z-index:20;
-      height:var(--topbar-h);
-      background: linear-gradient(to bottom, rgba(11,15,23,.92), rgba(11,15,23,.70));
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
+    /* subtle grid */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(900px 600px at 50% 12%, black 30%, transparent 75%);
+      opacity:.55;
+      z-index:0;
     }
-    .topbar{
-      height:var(--topbar-h);
+
+    a{ color:inherit; text-decoration:none; }
+    a:focus-visible, button:focus-visible{
+      outline:2px solid rgba(143,240,255,.9);
+      outline-offset:3px;
+      border-radius:10px;
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 22px 18px 40px;
+    }
+
+    /* Top bar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,13,16,.78), rgba(11,13,16,.42));
+      border-bottom:1px solid var(--line2);
+    }
+    .bar{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 14px 18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:12px;
     }
     .brand{
       display:flex;
-      align-items:baseline;
-      gap:10px;
-      min-width:260px;
-      white-space:nowrap;
+      align-items:center;
+      gap:12px;
+      min-width: 200px;
     }
-    .name{font-weight:700; letter-spacing:-.02em; font-size:16px}
-    .dot{
-      width:7px; height:7px; border-radius:999px;
-      background:var(--accent);
-      box-shadow:0 0 0 6px rgba(47,107,255,.14);
-      transform:translateY(-2px);
+    .mark{
+      width:34px; height:34px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(14px 14px at 30% 30%, rgba(143,240,255,.85), transparent 70%),
+        radial-gradient(16px 16px at 70% 70%, rgba(185,255,176,.75), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
     }
-    .role{color:var(--muted); font-style:italic; font-size:13px}
-    nav{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    }
-    .navlink{
-      font-size:13px;
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:10px;
-    }
-    .navlink:hover{color:var(--text); background:rgba(238,243,255,.06)}
-    .cta{
-      font-size:13px;
-      font-weight:600;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(47,107,255,.55);
-      background: linear-gradient(180deg, rgba(47,107,255,.22), rgba(47,107,255,.10));
-      color:var(--text);
-    }
-    .cta:hover{background: linear-gradient(180deg, rgba(47,107,255,.30), rgba(47,107,255,.14))}
-
-    /* ===== Two-column shell ===== */
-    .shell{
-      height: calc(100vh - var(--topbar-h));
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:var(--gutter);
-      padding:24px 0;
-      align-items:stretch;
-    }
-
-    /* Left is sticky within the viewport; right scrolls */
-    .left{
-      position:sticky;
-      top: calc(var(--topbar-h) + 24px);
-      height: calc(100vh - var(--topbar-h) - 48px);
+    .brand .name{
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
-      min-width:0;
+      line-height:1.1;
     }
-
-    .right{
-      height: calc(100vh - var(--topbar-h) - 48px);
-      overflow:auto;
-      padding-right:6px; /* room for scrollbar */
-      scroll-behavior:smooth;
+    .brand .name strong{
+      font-weight:650;
+      letter-spacing:.2px;
+      font-size:14px;
     }
-
-    /* Nice scrollbar (still neutral) */
-    .right::-webkit-scrollbar{width:10px}
-    .right::-webkit-scrollbar-thumb{
-      background: rgba(238,243,255,.10);
-      border-radius:999px;
-      border:2px solid rgba(0,0,0,0);
-      background-clip: padding-box;
-    }
-    .right::-webkit-scrollbar-thumb:hover{background: rgba(238,243,255,.16)}
-    .right::-webkit-scrollbar-track{background: transparent}
-
-    /* ===== Typography & rhythm ===== */
-    h1{
-      margin:0 0 14px;
-      font-size:52px;
-      line-height:1.02;
-      letter-spacing:-.03em;
-    }
-    .bullets{
-      margin:0 0 18px;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .bullets li{
-      position:relative;
-      padding-left:20px;
-      font-size:15px;
-      color:var(--text);
-    }
-    .bullets li::before{
-      content:"";
-      position:absolute;
-      left:0;
-      top:.62em;
-      width:9px; height:9px;
-      border-radius:999px;
-      background:var(--accent);
-      box-shadow:0 0 0 6px rgba(47,107,255,.14);
-    }
-    p{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:16px;
-      max-width:72ch;
-    }
-
-    /* Section label style */
-    .label{
-      margin:0 0 10px;
+    .brand .name span{
       font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(238,243,255,.62);
+      color:var(--muted2);
+      letter-spacing:.2px;
     }
 
-    /* Left bottom CTA row */
-    .bottom{
-      border-top:1px solid var(--line);
-      padding-top:16px;
+    nav{
       display:flex;
       align-items:center;
-      justify-content:space-between;
       gap:14px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .bottom strong{font-size:14px}
-    .chips{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .chip{
-      font-size:13px;
-      padding:9px 12px;
+    .navlink{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding:10px 10px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(238,243,255,.04);
-      color:var(--text);
+      border:1px solid transparent;
+      transition: border-color .2s ease, background .2s ease, color .2s ease;
     }
-    .chip:hover{background: rgba(238,243,255,.07)}
-    .chip.accent{
-      border-color: rgba(47,107,255,.55);
-      background: rgba(47,107,255,.14);
-      font-weight:600;
+    .navlink:hover{
+      color:var(--fg);
+      border-color:var(--line);
+      background: rgba(255,255,255,.04);
     }
-    .chip.accent:hover{background: rgba(47,107,255,.20)}
 
-    footer{
-      margin-top:14px;
+    .cta{
       display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      color:rgba(238,243,255,.55);
-      font-size:13px;
+      align-items:center;
+      gap:10px;
     }
-
-    /* ===== Workshops panel ===== */
-    .panel{
-      border-left:1px solid var(--line);
-      padding-left:22px;
-      min-width:0;
-    }
-    .panel h2{
-      margin:0 0 14px;
+    .btn{
+      appearance:none;
+      border:1px solid rgba(143,240,255,.35);
+      background:
+        radial-gradient(90px 40px at 25% 35%, rgba(143,240,255,.28), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      color:var(--fg);
+      padding: 10px 14px;
+      border-radius:999px;
       font-size:12px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      color:rgba(238,243,255,.62);
+      cursor:pointer;
+      transition: transform .12s ease, border-color .2s ease, background .2s ease;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(185,255,176,.55);
+      background:
+        radial-gradient(90px 40px at 25% 35%, rgba(185,255,176,.22), transparent 70%),
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
     }
 
-    .block{
-      padding:16px 0 18px;
-      border-top:1px solid var(--line);
+    .btn.secondary{
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      box-shadow:none;
     }
-    .block:first-of-type{border-top:none; padding-top:0}
+    .btn.secondary:hover{
+      border-color: rgba(143,240,255,.35);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* Layout sections */
+    main{ padding-top: 28px; }
+    section{
+      border-top:1px solid var(--line2);
+      padding: 26px 0;
+    }
+    section:first-of-type{
+      border-top:0;
+      padding-top: 18px;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:start;
+      padding-bottom: 14px;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+      .brand{ min-width: 0; }
+      nav{ justify-content:flex-start; }
+    }
+
     .kicker{
-      margin:0 0 6px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
       font-size:12px;
       letter-spacing:.12em;
       text-transform:uppercase;
-      color:rgba(238,243,255,.58);
+      width:fit-content;
     }
-    .title{
-      margin:0 0 8px;
-      font-size:20px;
+    .dot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(143,240,255,.10);
+    }
+
+    h1{
+      margin: 14px 0 8px;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+      font-weight:720;
+    }
+    .subhead{
+      margin:0;
+      color:var(--muted);
+      font-size: 16px;
+      line-height:1.55;
+      max-width: 65ch;
+    }
+
+    .heroActions{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .micro{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top:1px dashed var(--line);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted2);
+      font-size:12px;
+      letter-spacing:.04em;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      padding:7px 10px;
+      border-radius:999px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .pill:hover{
+      background: rgba(255,255,255,.05);
+      border-color: rgba(143,240,255,.28);
+      color: var(--fg);
+    }
+
+    /* Portrait / placeholder */
+    .portrait{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(240px 240px at 30% 30%, rgba(143,240,255,.12), transparent 55%),
+        radial-gradient(240px 240px at 70% 70%, rgba(185,255,176,.10), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+      padding: 14px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .portrait::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(520px 260px at 40% 0%, rgba(143,240,255,.12), transparent 70%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .portraitTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .portraitTop .label{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .portraitTop .hint{
+      font-family:var(--mono);
+      font-size:11px;
+      color:rgba(233,238,245,.55);
+    }
+    .photoBox{
+      margin-top: 12px;
+      border-radius: calc(var(--radius) - 8px);
+      border:1px dashed rgba(233,238,245,.22);
+      background: rgba(0,0,0,.18);
+      aspect-ratio: 4 / 5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      z-index:1;
+      overflow:hidden;
+    }
+    .photoBox span{
+      text-align:center;
+      color: rgba(233,238,245,.58);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding: 14px;
+      line-height:1.35;
+    }
+    .photoBox::before{
+      content:"";
+      position:absolute;
+      width:140%;
+      height:140%;
+      background:
+        conic-gradient(from 180deg, rgba(143,240,255,.18), rgba(185,255,176,.14), rgba(143,240,255,.18));
+      filter: blur(18px);
+      opacity:.55;
+      animation: drift 10s linear infinite;
+    }
+    @keyframes drift{
+      0%{ transform: translate(-6%, -4%) rotate(0deg); }
+      100%{ transform: translate(6%, 4%) rotate(360deg); }
+    }
+
+    /* Two-column compact sections */
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    .sectTitle{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(233,238,245,.88);
+      font-weight:650;
+    }
+    .sectMeta{
+      font-size:12px;
+      color: var(--muted2);
+    }
+    .bodyText{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height:1.65;
+      max-width: 75ch;
+    }
+
+    .rule{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(233,238,245,.20), transparent);
+      margin: 14px 0 10px;
+      opacity:.9;
+    }
+
+    /* Program lines (no cards) */
+    .program{
+      border-top:1px solid var(--line2);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .program:first-child{
+      border-top:0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+    .program h3{
+      margin: 0 0 8px;
+      font-size: 18px;
       letter-spacing:-.01em;
+      font-weight:680;
     }
-    .desc{
+    .program p{
       margin:0 0 12px;
       color:var(--muted);
       font-size:15px;
-      line-height:1.55;
+      line-height:1.65;
     }
-    .learn{
+    .arrowLink{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      font-weight:600;
-      font-size:14px;
-      border-bottom:1px solid rgba(238,243,255,.18);
-      padding-bottom:2px;
-      width:max-content;
+      color: rgba(233,238,245,.90);
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      padding: 10px 0;
+      border-bottom:1px solid transparent;
+      transition: color .2s ease, border-color .2s ease, transform .15s ease;
     }
-    .learn:hover{border-bottom-color:var(--accent)}
-    .learn .arr{
-      width:18px; height:18px;
-      border-radius:999px;
-      border:1px solid rgba(238,243,255,.16);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    .arrowLink:hover{
+      color: var(--fg);
+      border-color: rgba(143,240,255,.45);
+      transform: translateX(2px);
     }
-    .learn .arr::before{
-      content:"→";
-      color:var(--accent);
-      font-weight:700;
-      transform: translateX(0.5px);
+    .arrow{
+      width:14px; height:14px;
+      display:inline-block;
+      transform: translateY(1px);
     }
 
-    /* ===== Mobile: stack and allow normal scroll ===== */
-    @media (max-width: 980px){
-      .shell{
-        height:auto;
-        grid-template-columns:1fr;
-        padding:18px 0 34px;
-      }
-      .left{
-        position:relative;
-        top:auto;
-        height:auto;
-      }
-      .right{
-        height:auto;
-        overflow:visible;
-        padding-right:0;
-      }
-      .panel{
-        border-left:none;
-        padding-left:0;
-        border-top:1px solid var(--line);
-        padding-top:18px;
-      }
-      h1{font-size:38px}
+    /* Contact strip */
+    .contactStrip{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      padding: 18px 0 0;
+    }
+    .contactStrip .left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .contactStrip .left .big{
+      font-size:18px;
+      font-weight:680;
+      letter-spacing:-.01em;
+    }
+    .contactStrip .left .small{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      max-width: 70ch;
+    }
+    footer{
+      border-top:1px solid var(--line2);
+      padding: 18px 0 26px;
+      color: var(--muted2);
+      font-size:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* small utility */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="wrap topbar">
-      <div class="brand">
-        <span class="name">Vayola Florus</span>
-        <span class="dot" aria-hidden="true"></span>
-        <span class="role">Nonprofit Technologist</span>
-      </div>
+    <div class="bar" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="name">
+          <strong>Vayola Florus</strong>
+          <span>Nonprofit Technologist</span>
+        </div>
+      </a>
 
-      <nav aria-label="Links">
-        <!-- Replace placeholders -->
-        <a class="navlink" href="mailto:YOUR_EMAIL">Email</a>
-        <a class="navlink" href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="navlink" href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="cta" href="#contact">Start a conversation</a>
+      <nav>
+        <a class="navlink" href="#work">Work</a>
+        <a class="navlink" href="#programs">Programs</a>
+        <a class="navlink" href="#workshops">Workshops</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="btn" href="#contact">Start a conversation</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="shell">
-      <!-- LEFT: stays static -->
-      <section class="left" aria-label="Main content">
-        <div>
-          <h1>Technology support that’s practical, clear, and people-centered</h1>
+  <div class="wrap" id="top">
+    <main>
+      <!-- HERO -->
+      <section aria-label="Intro">
+        <div class="hero">
+          <div>
+            <div class="kicker"><span class="dot" aria-hidden="true"></span> Nonprofit Technologist</div>
 
-          <ul class="bullets">
-            <li>Plain language. No hype.</li>
-            <li>Ethical and responsible practice.</li>
-            <li>Grounded in real program delivery.</li>
-          </ul>
+            <!-- Keep the user's text EXACTLY as provided (no edits) -->
+            <h1>Vayola Florus</h1>
 
-          <p>
-            If you’re responsible for programs and people, you’re likely under pressure to use more technology and AI even when time, staff capacity, and support are limited.
-          </p>
+            <p class="subhead"><strong>Technology support that’s practical, clear, and people-centered</strong></p>
 
-          <p>
-            I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting public-facing programs that help community members build practical digital skills.
-          </p>
+            <div class="rule" aria-hidden="true"></div>
 
-          <div class="label">Workshops & Programs</div>
-        </div>
+            <p class="bodyText">
+              If you’re responsible for programs and people, you’re likely under pressure to use more technology and AI even when time, staff capacity, and support are limited.
+              <br><br>
+              I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting public-facing programs that help community members build practical digital skills.
+            </p>
 
-        <div>
-          <div class="bottom" id="contact">
-            <strong>Start a conversation</strong>
-            <div class="chips">
-              <a class="chip accent" href="mailto:YOUR_EMAIL">Email</a>
-              <a class="chip" href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a class="chip" href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
+            <div class="heroActions">
+              <a class="btn" href="#contact">Start a conversation</a>
+              <a class="btn secondary" href="#programs">Workshops &amp; Programs</a>
+            </div>
+
+            <div class="micro" aria-label="Links">
+              <a class="pill" href="#" aria-label="Linkedin">Linkedin</a>
+              <a class="pill" href="#" aria-label="Email">Email</a>
+              <a class="pill" href="#" aria-label="Github">Github</a>
             </div>
           </div>
 
-          <footer>
-            <span>© <span id="year"></span> Vayola Florus</span>
-            <span>Plain language. No hype.</span>
-          </footer>
+          <!-- Photo placeholder -->
+          <aside class="portrait" aria-label="Photo">
+            <div class="portraitTop">
+              <div class="label">Mini photo</div>
+              <div class="hint">Replace with your image</div>
+            </div>
+            <div class="photoBox" role="img" aria-label="Placeholder for a mini photo of me">
+              <span>Drop a headshot here<br>(replace this box)</span>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <!-- RIGHT: scrolls independently -->
-      <aside class="right panel" aria-label="Workshops list">
-        <h2>Workshops</h2>
-
-        <div class="block">
-          <div class="kicker">Youth Programs</div>
-          <div class="title"><em>Thinking Clearly About AI</em></div>
-          <div class="desc">
-            <em>A 6-week, ready-to-run cohort helping youth understand how AI works, where it falls short, and why human judgment matters.</em>
+      <!-- WORK -->
+      <section id="work" aria-label="What I do">
+        <div class="grid2">
+          <div>
+            <div class="sectTitle">
+              <h2>Work</h2>
+              <div class="sectMeta">Practical + ethical</div>
+            </div>
+            <p class="bodyText">
+              I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting public-facing programs that help community members build practical digital skills.
+            </p>
           </div>
-          <a class="learn" href="YOUTH_WORKSHOP_LINK">
-            Learn more <span class="arr" aria-hidden="true"></span>
-          </a>
+
+          <div>
+            <div class="sectTitle">
+              <h2>Approach</h2>
+              <div class="sectMeta">Clear + people-centered</div>
+            </div>
+            <p class="bodyText">
+              Technology support that’s practical, clear, and people-centered
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS -->
+      <section id="programs" aria-label="Workshops and Programs">
+        <div class="sectTitle">
+          <h2>Workshops &amp; Programs</h2>
+          <div class="sectMeta">Ready-to-run, interactive</div>
         </div>
 
-        <div class="block">
-          <div class="kicker">Staff Workshops</div>
-          <div class="title"><em>Using AI Responsibly in Nonprofit Work</em></div>
-          <div class="desc">
-            <em>A 2-hour interactive workshop helping nonprofit staff explore practical AI use while protecting ethics, privacy, and vulnerable communities.</em>
+        <div class="grid2">
+          <div id="youth" aria-label="Youth Programs">
+            <div class="sectTitle">
+              <h2>Youth Programs</h2>
+              <div class="sectMeta">Cohorts</div>
+            </div>
+
+            <div class="program">
+              <h3>Introduction to AI for Youth</h3>
+              <p>
+                A 6-week, ready-to-run cohort helping youth understand how AI works, where it falls short, and why human judgment matters.
+              </p>
+              <a class="arrowLink" href="#" aria-label="See Cohort Plan">
+                → See Cohort Plan
+              </a>
+            </div>
           </div>
-          <a class="learn" href="STAFF_WORKSHOP_LINK">
-            Learn more <span class="arr" aria-hidden="true"></span>
-          </a>
+
+          <div id="workshops" aria-label="Staff Workshops">
+            <div class="sectTitle">
+              <h2>Staff Workshops</h2>
+              <div class="sectMeta">2-hour session</div>
+            </div>
+
+            <div class="program">
+              <h3>Using AI Responsibly in Nonprofit Work</h3>
+              <p>
+                A 2-hour interactive workshop helping nonprofit staff explore practical AI use while protecting ethics, privacy, and vulnerable communities.
+              </p>
+              <a class="arrowLink" href="#" aria-label="See Workshop Agenda">
+                → See Workshop Agenda
+              </a>
+            </div>
+          </div>
         </div>
-      </aside>
-    </div>
-  </main>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-label="Start a conversation">
+        <div class="contactStrip">
+          <div class="left">
+            <div class="big">Start a conversation</div>
+            <div class="small">
+              (Add your preferred contact method here — email link, form, or scheduling link.)
+            </div>
+          </div>
+          <div class="right">
+            <a class="btn" href="mailto:you@example.com">Start a conversation</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Vayola Florus</div>
+      <div>Nonprofit Technologist</div>
+    </footer>
+  </div>
 
   <script>
+    // small nicety: current year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Optional: close the loop on placeholder links with smooth intent
+    // (keeps UX clean if you haven't wired these yet)
+    document.querySelectorAll('a[href="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const contact = document.getElementById("contact");
+        if (contact) contact.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
   </script>
 </body>
 </html>
