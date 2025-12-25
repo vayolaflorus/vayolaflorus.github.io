@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vayola Florus — Nonprofit Technologist</title>
   <meta name="description" content="Technology support that’s practical, clear, and people-centered" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,18 +12,21 @@
   <style>
     :root{
       /* ONE bold accent color */
-      --accent:#0B6EF3;
+      --accent:#2F6BFF;
 
-      /* Neutrals (not additional “colors”—just grayscale) */
-      --bg:#0a0f17;
-      --panel:#0c1422;
-      --text:#eef3ff;
-      --muted:#b7c2dd;
-      --line:rgba(238,243,255,.14);
+      /* neutrals */
+      --bg:#0B0F17;
+      --surface:#0E1422;
+      --text:#EEF3FF;
+      --muted:#B8C2DA;
+      --line:rgba(238,243,255,.12);
 
-      --max:1040px;
-      --radius:18px;
-      --font: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --max:1160px;
+      --gutter:28px;
+      --radius:16px;
+      --font:"Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+      --topbar-h:64px;
     }
 
     *{box-sizing:border-box}
@@ -34,9 +36,8 @@
       font-family:var(--font);
       color:var(--text);
       background:
-        radial-gradient(900px 520px at 15% -10%, rgba(11,110,243,.20), transparent 55%),
-        radial-gradient(700px 520px at 85% 10%, rgba(11,110,243,.12), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 35%),
+        radial-gradient(900px 520px at 12% -10%, rgba(47,107,255,.18), transparent 55%),
+        radial-gradient(700px 520px at 90% 10%, rgba(47,107,255,.10), transparent 60%),
         var(--bg);
       line-height:1.55;
       -webkit-font-smoothing:antialiased;
@@ -45,84 +46,113 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
 
-    /* Top bar */
+    /* ===== Top bar ===== */
     header{
-      position:sticky; top:0; z-index:10;
-      background: linear-gradient(to bottom, rgba(10,15,23,.92), rgba(10,15,23,.72));
+      position:sticky; top:0; z-index:20;
+      height:var(--topbar-h);
+      background: linear-gradient(to bottom, rgba(11,15,23,.92), rgba(11,15,23,.70));
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--line);
     }
     .topbar{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:14px 0;
-      gap:14px; flex-wrap:wrap;
+      height:var(--topbar-h);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
     .brand{
-      display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      min-width:260px;
+      white-space:nowrap;
     }
-    .brand .name{font-weight:700; letter-spacing:-.02em; font-size:18px}
-    .brand .role{color:var(--muted); font-style:italic; font-size:13px}
-    .brand .sep{
-      width:6px; height:6px; border-radius:999px;
+    .name{font-weight:700; letter-spacing:-.02em; font-size:16px}
+    .dot{
+      width:7px; height:7px; border-radius:999px;
       background:var(--accent);
-      box-shadow:0 0 0 6px rgba(11,110,243,.14);
-      transform: translateY(-2px);
+      box-shadow:0 0 0 6px rgba(47,107,255,.14);
+      transform:translateY(-2px);
     }
-
-    .nav{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    .role{color:var(--muted); font-style:italic; font-size:13px}
+    nav{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
     }
-    .nav a{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:10px;
+    .navlink{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
     }
-    .nav a:hover{color:var(--text); background:rgba(238,243,255,.06)}
+    .navlink:hover{color:var(--text); background:rgba(238,243,255,.06)}
     .cta{
-      color:var(--text) !important;
-      border:1px solid rgba(11,110,243,.55);
-      background: linear-gradient(180deg, rgba(11,110,243,.26), rgba(11,110,243,.10));
-      padding:8px 12px;
-      border-radius:999px;
+      font-size:13px;
       font-weight:600;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(47,107,255,.55);
+      background: linear-gradient(180deg, rgba(47,107,255,.22), rgba(47,107,255,.10));
+      color:var(--text);
     }
-    .cta:hover{
-      background: linear-gradient(180deg, rgba(11,110,243,.34), rgba(11,110,243,.14));
-    }
+    .cta:hover{background: linear-gradient(180deg, rgba(47,107,255,.30), rgba(47,107,255,.14))}
 
-    /* Layout */
-    main{padding:26px 0 44px;}
-    .grid{
+    /* ===== Two-column shell ===== */
+    .shell{
+      height: calc(100vh - var(--topbar-h));
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap:34px;
-      align-items:start;
-    }
-    @media (max-width: 920px){
-      .grid{grid-template-columns:1fr; gap:22px;}
+      gap:var(--gutter);
+      padding:24px 0;
+      align-items:stretch;
     }
 
-    /* Hero */
-    .hero h1{
+    /* Left is sticky within the viewport; right scrolls */
+    .left{
+      position:sticky;
+      top: calc(var(--topbar-h) + 24px);
+      height: calc(100vh - var(--topbar-h) - 48px);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-width:0;
+    }
+
+    .right{
+      height: calc(100vh - var(--topbar-h) - 48px);
+      overflow:auto;
+      padding-right:6px; /* room for scrollbar */
+      scroll-behavior:smooth;
+    }
+
+    /* Nice scrollbar (still neutral) */
+    .right::-webkit-scrollbar{width:10px}
+    .right::-webkit-scrollbar-thumb{
+      background: rgba(238,243,255,.10);
+      border-radius:999px;
+      border:2px solid rgba(0,0,0,0);
+      background-clip: padding-box;
+    }
+    .right::-webkit-scrollbar-thumb:hover{background: rgba(238,243,255,.16)}
+    .right::-webkit-scrollbar-track{background: transparent}
+
+    /* ===== Typography & rhythm ===== */
+    h1{
       margin:0 0 14px;
-      font-size:44px;
-      line-height:1.05;
+      font-size:52px;
+      line-height:1.02;
       letter-spacing:-.03em;
     }
-    @media (max-width: 520px){
-      .hero h1{font-size:34px;}
-    }
-
     .bullets{
-      margin:0 0 16px;
+      margin:0 0 18px;
       padding:0;
       list-style:none;
       display:grid;
       gap:10px;
-      max-width:70ch;
     }
     .bullets li{
       position:relative;
-      padding-left:18px;
+      padding-left:20px;
       font-size:15px;
       color:var(--text);
     }
@@ -131,122 +161,154 @@
       position:absolute;
       left:0;
       top:.62em;
-      width:8px; height:8px;
+      width:9px; height:9px;
       border-radius:999px;
       background:var(--accent);
-      box-shadow:0 0 0 6px rgba(11,110,243,.14);
+      box-shadow:0 0 0 6px rgba(47,107,255,.14);
     }
-
-    .hero p{
-      margin:0 0 12px;
+    p{
+      margin:0 0 14px;
       color:var(--muted);
       font-size:16px;
-      max-width:78ch;
+      max-width:72ch;
     }
 
-    /* Right rail (not a card; a framed sidebar) */
-    .rail{
+    /* Section label style */
+    .label{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(238,243,255,.62);
+    }
+
+    /* Left bottom CTA row */
+    .bottom{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .bottom strong{font-size:14px}
+    .chips{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .chip{
+      font-size:13px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(238,243,255,.04);
+      color:var(--text);
+    }
+    .chip:hover{background: rgba(238,243,255,.07)}
+    .chip.accent{
+      border-color: rgba(47,107,255,.55);
+      background: rgba(47,107,255,.14);
+      font-weight:600;
+    }
+    .chip.accent:hover{background: rgba(47,107,255,.20)}
+
+    footer{
+      margin-top:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:rgba(238,243,255,.55);
+      font-size:13px;
+    }
+
+    /* ===== Workshops panel ===== */
+    .panel{
       border-left:1px solid var(--line);
       padding-left:22px;
+      min-width:0;
     }
-    @media (max-width: 920px){
-      .rail{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:18px;}
+    .panel h2{
+      margin:0 0 14px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(238,243,255,.62);
     }
-    .rail h2{
-      margin:0 0 10px;
+
+    .block{
+      padding:16px 0 18px;
+      border-top:1px solid var(--line);
+    }
+    .block:first-of-type{border-top:none; padding-top:0}
+    .kicker{
+      margin:0 0 6px;
       font-size:12px;
       letter-spacing:.12em;
       text-transform:uppercase;
-      color:var(--muted);
+      color:rgba(238,243,255,.58);
     }
-    .rail .block{
-      padding:14px 0;
-      border-top:1px solid var(--line);
-    }
-    .rail .block:first-of-type{border-top:none; padding-top:0;}
-    .rail .label{
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      margin:0 0 6px;
-    }
-    .rail .title{
-      margin:0 0 6px;
-      font-size:18px;
+    .title{
+      margin:0 0 8px;
+      font-size:20px;
       letter-spacing:-.01em;
     }
-    .rail .desc{
-      margin:0 0 10px;
+    .desc{
+      margin:0 0 12px;
       color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
+      font-size:15px;
+      line-height:1.55;
     }
     .learn{
       display:inline-flex;
       align-items:center;
-      gap:8px;
+      gap:10px;
       font-weight:600;
       font-size:14px;
-      padding:8px 0;
       border-bottom:1px solid rgba(238,243,255,.18);
+      padding-bottom:2px;
       width:max-content;
     }
-    .learn:hover{border-bottom-color:var(--accent);}
-    .learn::after{content:"→"; color:var(--accent); font-weight:700;}
-
-    /* Section heading */
-    .section-title{
-      margin:24px 0 10px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    /* Contact band */
-    .contact{
-      margin-top:18px;
-      border-top:1px solid var(--line);
-      padding-top:18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .contact strong{font-size:14px;}
-    .contact-links{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .chip{
-      border:1px solid var(--line);
-      background: rgba(238,243,255,.04);
-      color:var(--text);
-      font-size:13px;
-      padding:8px 10px;
+    .learn:hover{border-bottom-color:var(--accent)}
+    .learn .arr{
+      width:18px; height:18px;
       border-radius:999px;
+      border:1px solid rgba(238,243,255,.16);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
-    .chip:hover{background: rgba(238,243,255,.07)}
-    .chip.accent{
-      border-color: rgba(11,110,243,.55);
-      background: rgba(11,110,243,.14);
-      font-weight:600;
+    .learn .arr::before{
+      content:"→";
+      color:var(--accent);
+      font-weight:700;
+      transform: translateX(0.5px);
     }
-    .chip.accent:hover{background: rgba(11,110,243,.20)}
 
-    footer{
-      margin-top:26px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+    /* ===== Mobile: stack and allow normal scroll ===== */
+    @media (max-width: 980px){
+      .shell{
+        height:auto;
+        grid-template-columns:1fr;
+        padding:18px 0 34px;
+      }
+      .left{
+        position:relative;
+        top:auto;
+        height:auto;
+      }
+      .right{
+        height:auto;
+        overflow:visible;
+        padding-right:0;
+      }
+      .panel{
+        border-left:none;
+        padding-left:0;
+        border-top:1px solid var(--line);
+        padding-top:18px;
+      }
+      h1{font-size:38px}
     }
   </style>
 </head>
@@ -256,78 +318,85 @@
     <div class="wrap topbar">
       <div class="brand">
         <span class="name">Vayola Florus</span>
-        <span class="sep" aria-hidden="true"></span>
+        <span class="dot" aria-hidden="true"></span>
         <span class="role">Nonprofit Technologist</span>
       </div>
 
-      <nav class="nav" aria-label="Links">
+      <nav aria-label="Links">
         <!-- Replace placeholders -->
-        <a href="mailto:YOUR_EMAIL">Email</a>
-        <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="navlink" href="mailto:YOUR_EMAIL">Email</a>
+        <a class="navlink" href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="navlink" href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
         <a class="cta" href="#contact">Start a conversation</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="grid">
-      <!-- Left: Your exact copy -->
-      <section class="hero" aria-label="Intro">
-        <h1>Technology support that’s practical, clear, and people-centered</h1>
+    <div class="shell">
+      <!-- LEFT: stays static -->
+      <section class="left" aria-label="Main content">
+        <div>
+          <h1>Technology support that’s practical, clear, and people-centered</h1>
 
-        <ul class="bullets">
-          <li>Plain language. No hype.</li>
-          <li>Ethical and responsible practice.</li>
-          <li>Grounded in real program delivery.</li>
-        </ul>
+          <ul class="bullets">
+            <li>Plain language. No hype.</li>
+            <li>Ethical and responsible practice.</li>
+            <li>Grounded in real program delivery.</li>
+          </ul>
 
-        <p>
-          If you’re responsible for programs and people, you’re likely under pressure to use more technology and AI even when time, staff capacity, and support are limited.
-        </p>
+          <p>
+            If you’re responsible for programs and people, you’re likely under pressure to use more technology and AI even when time, staff capacity, and support are limited.
+          </p>
 
-        <p>
-          I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting public-facing programs that help community members build practical digital skills.
-        </p>
+          <p>
+            I support nonprofit and public-sector organizations in two connected ways: building staff capacity and supporting public-facing programs that help community members build practical digital skills.
+          </p>
 
-        <div class="section-title">Workshops & Programs</div>
-
-        <!-- We keep the content minimal here to reduce scroll; details live in the rail. -->
-        <div class="contact" id="contact" aria-label="Start a conversation">
-          <strong>Start a conversation</strong>
-          <div class="contact-links">
-            <a class="chip accent" href="mailto:YOUR_EMAIL">Email</a>
-            <a class="chip" href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="chip" href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
+          <div class="label">Workshops & Programs</div>
         </div>
 
-        <footer>
-          <span>© <span id="year"></span> Vayola Florus</span>
-          <span>Plain language. No hype.</span>
-        </footer>
+        <div>
+          <div class="bottom" id="contact">
+            <strong>Start a conversation</strong>
+            <div class="chips">
+              <a class="chip accent" href="mailto:YOUR_EMAIL">Email</a>
+              <a class="chip" href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="chip" href="YOUR_GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <footer>
+            <span>© <span id="year"></span> Vayola Florus</span>
+            <span>Plain language. No hype.</span>
+          </footer>
+        </div>
       </section>
 
-      <!-- Right: Offerings (not cards; structured rail) -->
-      <aside class="rail" aria-label="Workshops">
+      <!-- RIGHT: scrolls independently -->
+      <aside class="right panel" aria-label="Workshops list">
         <h2>Workshops</h2>
 
         <div class="block">
-          <div class="label">Youth Programs</div>
+          <div class="kicker">Youth Programs</div>
           <div class="title"><em>Thinking Clearly About AI</em></div>
           <div class="desc">
             <em>A 6-week, ready-to-run cohort helping youth understand how AI works, where it falls short, and why human judgment matters.</em>
           </div>
-          <a class="learn" href="YOUTH_WORKSHOP_LINK">Learn more</a>
+          <a class="learn" href="YOUTH_WORKSHOP_LINK">
+            Learn more <span class="arr" aria-hidden="true"></span>
+          </a>
         </div>
 
         <div class="block">
-          <div class="label">Staff Workshops</div>
+          <div class="kicker">Staff Workshops</div>
           <div class="title"><em>Using AI Responsibly in Nonprofit Work</em></div>
           <div class="desc">
             <em>A 2-hour interactive workshop helping nonprofit staff explore practical AI use while protecting ethics, privacy, and vulnerable communities.</em>
           </div>
-          <a class="learn" href="STAFF_WORKSHOP_LINK">Learn more</a>
+          <a class="learn" href="STAFF_WORKSHOP_LINK">
+            Learn more <span class="arr" aria-hidden="true"></span>
+          </a>
         </div>
       </aside>
     </div>
