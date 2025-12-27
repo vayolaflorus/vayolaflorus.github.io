@@ -3,78 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vayola Florus | Nonprofit Technologist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nonprofit Technologist - AI Training for Mission-Driven Organizations</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .cta-gradient { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .logo {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5b6ee1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .credentials {
+            background: #f8f9fa;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .workshops {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .workshop-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border: 2px solid #e5e5e5;
+            transition: all 0.3s;
+        }
+        
+        .workshop-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 20px rgba(102,126,234,0.15);
+        }
+        
+        .workshop-tag {
+            display: inline-block;
+            background: #e8eaf6;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .workshop-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        
+        .workshop-price {
+            font-size: 20px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .workshop-description {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .workshop-outcomes {
+            margin: 24px 0;
+        }
+        
+        .workshop-outcomes h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        .workshop-outcomes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .workshop-outcomes li {
+            padding-left: 24px;
+            margin-bottom: 8px;
+            position: relative;
+            color: #555;
+        }
+        
+        .workshop-outcomes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .workshop-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            font-size: 16px;
+        }
+        
+        .workshop-link:hover {
+            text-decoration: underline;
+        }
+        
+        .about {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .workshop-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .workshop-card {
+                padding: 30px;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-
-    <nav class="sticky top-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-bold text-xl tracking-tight text-slate-800">Vayola Florus</div>
-            <div class="space-x-4 text-sm font-medium text-slate-600">
-                <a href="https://linkedin.com/in/vayola-florus-1658b02a3" class="hover:text-blue-600">LinkedIn</a>
-                <a href="mailto:vayola.florus01@gmail.com" class="hover:text-blue-600">Email</a>
-                <a href="https://github.com" class="hover:text-blue-600">Github</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center md:text-left">
-        <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-3">Nonprofit Technologist</h2>
-        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
-            Technology support that’s <br class="hidden md:block"> practical, clear, and people-centered
-        </h1>
-        <p class="text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed">
-            Leading nonprofit and public programs today means navigating constant pressure to adopt AI and new technology, usually without the extra time, staff, or budget to do it right. <br><br>
-            I work alongside management teams to make that transition practical and sustainable. By strengthening internal capacity and supporting public-facing programs, I help you ensure both your staff and your community build the real-world digital skills they need to thrive.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="#contact" class="cta-gradient text-white px-8 py-4 rounded-xl font-bold text-center shadow-lg shadow-blue-200 hover:scale-105 transition-transform">
-                Start a conversation
-            </a>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Vayola Florus · Nonprofit Technologist</div>
         </div>
     </header>
 
-    <section class="max-w-5xl mx-auto px-6 py-20">
-        <h3 class="text-3xl font-bold mb-12">Workshops & Programs</h3>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <div class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold w-fit mb-4">Youth Programs</div>
-                <h4 class="text-xl font-bold mb-3">Introduction to AI for Youth</h4>
-                <p class="text-slate-600 mb-2">A 6-week, ready-to-run cohort that helps youth build a practical understanding of AI, its limits, and the importance of human judgment and responsibility.</p>
-                <p class="text-slate-500 text-sm mb-6 leading-snug">Implementation support available. I partner with organizations during a 3–6 month implementation phase to support setup, staff onboarding, and program delivery.</p>
-                <a href="https://www.canva.com/design/DAG8eQpFfwg/Ngy8B5P2KuUQkMr8Q5ZvKA/view?utm_content=DAG8eQpFfwg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h50f2cde5f4" class="text-blue-600 font-semibold flex items-center group">
-                    See Cohort Plan <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </a>
-            </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Your nonprofit staff are overwhelmed by AI. I help them actually use it.</h1>
+            <p>No hype. No fear. Just practical training that helps mission-driven teams leverage AI ethically and effectively.</p>
+            <a href="mailto:your.email@example.com?subject=Let's%20Talk%20About%20AI%20Training" class="cta-button">Schedule a Free 15-Minute Call</a>
+        </div>
+    </section>
 
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                <div class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold w-fit mb-4">Staff Workshops</div>
-                <h4 class="text-xl font-bold mb-3">Using AI Responsibly in Nonprofit Work</h4>
-                <p class="text-slate-600 mb-6">A 2-hour interactive workshop helping nonprofit staff explore practical AI use while protecting ethics, privacy, and vulnerable communities.</p>
-                <a href="https://www.canva.com/design/DAG8erwIGV0/RHVEE12s6VDP6yk1bYtS-w/view?utm_content=DAG8erwIGV0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9faf2f678d" class="text-blue-600 font-semibold flex items-center group">
-                    See Workshop Agenda <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+    <section class="credentials">
+        <div class="container">
+            <p>I have 5 years of experience teaching technology to adults and youth. Currently, I work with a municipal digital equity team facilitating digital inclusion initiatives and have provided training to community members and municipal staff—from basic digital skills to advanced applications like AI.</p>
+        </div>
+    </section>
+
+    <section class="workshops">
+        <div class="container">
+            <h2 class="section-title">Workshops & Programs</h2>
+            
+            <div class="workshop-grid">
+                <div class="workshop-card">
+                    <span class="workshop-tag">Staff Workshop</span>
+                    <h3 class="workshop-title">Using AI Responsibly in Nonprofit Work</h3>
+                    <div class="workshop-price">2-Hour Workshop · Contact for Pricing</div>
+                    <p class="workshop-description">An interactive workshop helping nonprofit staff explore practical AI applications while protecting ethics, privacy, and vulnerable communities.</p>
+                    
+                    <div class="workshop-outcomes">
+                        <h4>Your team will learn to:</h4>
+                        <ul>
+                            <li>Use AI for grant writing, communications, and administrative tasks</li>
+                            <li>Identify when AI is appropriate (and when it's not)</li>
+                            <li>Protect client privacy and maintain ethical boundaries</li>
+                            <li>Reduce tech overwhelm and build confidence</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="mailto:your.email@example.com?subject=AI%20Workshop%20Inquiry" class="workshop-link">See Sample Agenda & Book →</a>
+                </div>
+
+                <div class="workshop-card">
+                    <span class="workshop-tag">Youth Program</span>
+                    <h3 class="workshop-title">Introduction to AI for Youth</h3>
+                    <div class="workshop-price">6-Week Cohort · Turnkey + Implementation Support</div>
+                    <p class="workshop-description">A ready-to-run program that helps youth build practical AI understanding, critical thinking about technology's limits, and the importance of human judgment and responsibility.</p>
+                    
+                    <div class="workshop-outcomes">
+                        <h4>What's included:</h4>
+                        <ul>
+                            <li>Complete curriculum and lesson plans</li>
+                            <li>3–6 month implementation support</li>
+                            <li>Staff onboarding and training</li>
+                            <li>Program delivery assistance</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="mailto:your.email@example.com?subject=Youth%20AI%20Cohort%20Inquiry" class="workshop-link">See Full Curriculum →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="max-w-5xl mx-auto px-6 py-20 text-center">
-        <div class="bg-slate-900 rounded-3xl p-12 text-white">
-            <h2 class="text-3xl font-bold mb-6">Want to Learn More?</h2>
-            <p class="text-slate-400 mb-8 max-w-md mx-auto">Let’s discuss how I can help</p>
-            <a href="mailto:vayola.florus01@gmail.com@example.com" class="inline-block bg-white text-slate-900 px-10 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors">
-                Start a conversation
-            </a>
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p>Having worked with nonprofits for over six years, I know firsthand the pressure to adopt AI and new tech when you’re already stretched thin on time, staff, and budget. My research and experience have shown that the stakes are significantly higher when serving vulnerable communities. Integrating AI into these services carries profound ethical weight—requiring a level of care and deliberation that simply cannot be rushed.</p>
+                
+                <p>I work alongside management teams to make that transition practical and sustainable for their team members. By strengthening internal capacity and supporting public-facing programs, I help organizations ensure both their staff and their community build the real-world digital skills they need to remain resilient and keep pace with a changing world.</p>
+                
+                <p><em>Need broader implementation or technology support beyond AI? Let's talk about what your team needs.</em></p>
+            </div>
         </div>
-        <p class="mt-12 text-slate-400 text-sm">© 2025 Vayola Florus. Built for impact.</p>
-    </footer>
+    </section>
 
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nonprofit Technologist. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                <a href="mailto:your.email@example.com" style="color: #667eea; text-decoration: none;">your.email@example.com</a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
